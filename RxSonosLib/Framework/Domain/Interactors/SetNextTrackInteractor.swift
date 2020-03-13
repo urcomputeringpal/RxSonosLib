@@ -32,3 +32,28 @@ class SetNextTrackInteractor: CompletableInteractor {
             .setNextTrack(for: group.master)
     }
 }
+
+struct SetPlayUriValues: RequestValues {
+    let group: Group
+    let uri:String
+}
+
+class SetPlayUriInteractor: CompletableInteractor {
+    
+    typealias T = SetPlayUriValues
+    
+    private let transportRepository: TransportRepository
+    
+    init(transportRepository: TransportRepository) {
+        self.transportRepository = transportRepository
+    }
+    
+    func buildInteractorObservable(values: SetPlayUriValues?) -> Completable {
+        guard let group = values?.group, let uri = values?.uri else {
+            return Completable.error(SonosError.invalidImplementation)
+        }
+        
+        return transportRepository
+            .setPlayUri(uri: uri, group: group)
+    }
+}
