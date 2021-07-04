@@ -1,6 +1,0 @@
-framework module RxSSDP {
-  umbrella header "RxSSDP-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1172,10 +1172,8 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iOS Demo App/Pods-iOS Demo App-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS Demo App/Pods-iOS Demo App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSSDP/RxSSDP.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -1183,8 +1181,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSonosLib/RxSonosLib.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSSDP.framework",
@@ -1194,7 +1190,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOS Demo App/Pods-iOS Demo App-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS Demo App/Pods-iOS Demo App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		767AC1B605FCCDFA49AEB0F1 /* [CP] Check Pods Manifest.lock */ = {
@@ -1282,31 +1278,23 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
-				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSSDP/RxSSDP.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSSDP.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

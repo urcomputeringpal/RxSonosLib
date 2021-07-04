@@ -74,4 +74,7 @@ open class SonosSettings {
      */
     public var renewRoomMuteTimer: RxTimeInterval = 2
     
+    /// Timeout used for requests to Sonos devices
+    public var requestTimeout: TimeInterval = 60
+    
 }

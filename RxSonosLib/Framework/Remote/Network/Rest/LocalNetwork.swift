@@ -14,7 +14,7 @@ class LocalNetwork<Target: SonosTargetType>: Network {
     
     func request(_ action: Target, on room: Room) -> Single<[String: String]> {
         let url = room.ip.appendingPathComponent(action.controllUrl)
-        var urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: url, timeoutInterval: SonosSettings.shared.requestTimeout)
         urlRequest.setValue(room.userAgent, forHTTPHeaderField: "User-Agent")
         urlRequest.setValue("text/xml; charset=\"utf-8\"", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue("gzip", forHTTPHeaderField: "Accept-Encoding")
