@@ -12,6 +12,10 @@ extension String {
     func timeToSeconds() -> UInt {
         let components = split(separator: ":")
         
+        if components.count == 0 {
+            return 0
+        }
+        
         var seconds = UInt(components[components.count-1]) ?? 0
         
         if components.count - 2 >= 0,

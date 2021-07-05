@@ -11,7 +11,7 @@ PODS:
     - RxSwift (>= 4.4.2, ~> 4.4)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxSonosLib (0.14.0):
+  - RxSonosLib (0.14.1):
     - AEXML (~> 4.4)
     - RxSSDP (~> 5.0)
     - RxSwift (~> 4.5)
@@ -51,7 +51,7 @@ SPEC CHECKSUMS:
   Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
   RxBlocking: 79413e4d916f44bb3e113c5b2cc059e36fe58910
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
-  RxSonosLib: a728220a7af772a183e2fc48e2a998eeaa284a80
+  RxSonosLib: 59eb78c831812d1d6833845149ad3661a26f3606
   RxSSDP: 662ce91a7ca8b340faf40f04590d608ac62b40df
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
