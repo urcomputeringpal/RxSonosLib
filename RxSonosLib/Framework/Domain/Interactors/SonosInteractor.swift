@@ -100,6 +100,16 @@ open class SonosInteractor {
     }
     
     /* Room */
+    static public func addMember(memberId: String, for room: Room) -> Completable {
+        return AddMemberInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+            .get(values: AddMemberValues(room: room, memberId:String))
+    }
+    
+    static public func removeMember(memberId: String, for room: Room) -> Completable {
+        return RemoveMemberInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+            .get(values: RemoveMemberValues(room: room, memberId:String))
+    }
+    
     static public func getMute(for room: Room) -> Observable<Bool> {
         return GetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: GetMuteValues(room: room))

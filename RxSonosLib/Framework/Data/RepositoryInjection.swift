@@ -31,6 +31,11 @@ class RepositoryInjection {
         return shared.groupRepository
     }
     
+    internal var groupManagementRepository: GroupManagementRepository = GroupManagementRepositoryImpl()
+    static public func provideGroupManagementRepository() -> GroupManagementRepository {
+        return shared.groupManagementRepository
+    }
+    
     internal var transportRepository: TransportRepository = TransportRepositoryImpl()
     static public func provideTransportRepository() -> TransportRepository {
         return shared.transportRepository
