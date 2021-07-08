@@ -173,6 +173,7 @@ extension SonosInteractor {
             .flatMap({ _ -> Observable<[Group]> in
                 return GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
                     .get(values: GetGroupsValues(rooms: rooms))
+                    .catchError({ _ in Single<[Group]>.just([]) })
                     .asObservable()
             })
             .subscribe(allGroups)
