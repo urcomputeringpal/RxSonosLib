@@ -101,12 +101,12 @@ open class SonosInteractor {
     
     /* Room */
     static public func addMember(memberId: String, for room: Room) -> Completable {
-        return AddMemberInteractor(renderingControlRepository: RepositoryInjection.provideGroupManagementRepository())
+        return AddMemberInteractor(groupManagementRepository: RepositoryInjection.provideGroupManagementRepository())
             .get(values: AddMemberValues(room: room, memberId:String))
     }
     
     static public func removeMember(memberId: String, for room: Room) -> Completable {
-        return RemoveMemberInteractor(renderingControlRepository: RepositoryInjection.provideGroupManagementRepository())
+        return RemoveMemberInteractor(groupManagementRepository: RepositoryInjection.provideGroupManagementRepository())
             .get(values: RemoveMemberValues(room: room, memberId:String))
     }
     
