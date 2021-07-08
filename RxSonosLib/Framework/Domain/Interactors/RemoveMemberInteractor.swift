@@ -18,10 +18,10 @@ class RemoveMemberInteractor: CompletableInteractor {
     
     typealias T = RemoveMemberValues
     
-    private let renderingControlRepository: RenderingControlRepository
+    private let groupManagementRepository: GroupManagementRepository
     
-    init(renderingControlRepository: RenderingControlRepository) {
-        self.renderingControlRepository = renderingControlRepository
+    init(groupManagementRepository: GroupManagementRepository) {
+        self.groupManagementRepository = groupManagementRepository
     }
     
     func buildInteractorObservable(values: RemoveMemberValues?) -> Completable {
@@ -30,7 +30,7 @@ class RemoveMemberInteractor: CompletableInteractor {
             return Completable.error(SonosError.invalidImplementation)
         }
         
-        return renderingControlRepository
+        return groupManagementRepository
             .removeMember(memberId: memberId, for: room)
     }
 }

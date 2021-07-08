@@ -18,10 +18,10 @@ class AddMemberInteractor: CompletableInteractor {
     
     typealias T = AddMemberValues
     
-    private let renderingControlRepository: RenderingControlRepository
+    private let groupManagementRepository: GroupManagementRepository
     
-    init(renderingControlRepository: RenderingControlRepository) {
-        self.renderingControlRepository = renderingControlRepository
+    init(groupManagementRepository: GroupManagementRepository) {
+        self.groupManagementRepository = groupManagementRepository
     }
     
     func buildInteractorObservable(values: AddMemberValues?) -> Completable {
@@ -30,7 +30,7 @@ class AddMemberInteractor: CompletableInteractor {
             return Completable.error(SonosError.invalidImplementation)
         }
         
-        return renderingControlRepository
+        return groupManagementRepository
             .addMember(memberId: memberId, for: room)
     }
 }

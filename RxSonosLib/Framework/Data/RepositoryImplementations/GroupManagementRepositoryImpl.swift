@@ -16,13 +16,13 @@ class GroupManagementRepositoryImpl: GroupManagementRepository {
     
     private let network = LocalNetwork<GroupTarget>()
     
-    func addMember(memberID: String, for room: Room) -> Completable {
+    func addMember(memberId: String, for room: Room) -> Completable {
         return network
             .request(.addMember,memberId:String, on: room)
             .asCompletable()
     }
     
-    func removeMember(memberID: String, for room: Room) -> Completable {
+    func removeMember(memberId: String, for room: Room) -> Completable {
         return network
             .request(.removeMember,memberId:String, on: room)
             .asCompletable()

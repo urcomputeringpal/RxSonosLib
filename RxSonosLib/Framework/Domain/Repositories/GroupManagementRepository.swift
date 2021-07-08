@@ -11,8 +11,8 @@ import RxSwift
 
 protocol GroupManagementRepository {
     
-    func addMember(memberID: String, for room: Room) -> Completable
+    func addMember(memberId: String, for room: Room) -> Completable
     
-    func removeMember(memberID: String, for room: Room) -> Completable
+    func removeMember(memberId: String, for room: Room) -> Completable
     
 }
