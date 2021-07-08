@@ -28,10 +28,10 @@ enum GroupManagementTarget: SonosTargetType {
     
     var arguments: String? {
         switch self {
-        case .addMember(let memberID):
-            return "<MemberID>\(memberID)</MemberID><BootSeq>0</BootSeq>"
-        case .removeMember(let memberID):
-            return "<MemberID>\(memberID)</MemberID>"
+        case .addMember(let memberId):
+            return "<MemberID>\(memberId)</MemberID><BootSeq>0</BootSeq>"
+        case .removeMember(let memberId):
+            return "<MemberID>\(memberId)</MemberID>"
     }
     
     var controllUrl: String {
