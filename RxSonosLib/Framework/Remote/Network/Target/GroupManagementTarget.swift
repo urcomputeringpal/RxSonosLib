@@ -10,9 +10,8 @@ import Foundation
 
 enum GroupManagementTarget: SonosTargetType {
     
-    case addMember(memberId:String)
-    case removeMember(memberId:String)
-//    case groupAttributes
+    case addMember(memberId: String)
+    case removeMember(memberId: String)
     
     var action: String {
         switch self {
@@ -20,9 +19,7 @@ enum GroupManagementTarget: SonosTargetType {
             return "AddMember"
         case .removeMember:
             return "RemoveMember"
-//
-//        case .groupAttributes:
-//            return "GetZoneGroupAttributes"
+
         }
     }
     
