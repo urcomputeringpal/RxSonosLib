@@ -14,17 +14,17 @@ import AEXML
 
 class GroupManagementRepositoryImpl: GroupManagementRepository {
     
-    private let network = LocalNetwork<GroupTarget>()
+    private let network = LocalNetwork<GroupManagementTarget>()
     
     func addMember(memberId: String, for room: Room) -> Completable {
         return network
-            .request(.addMember,memberId:String, on: room)
+            .request(.addMember(memberId: memberId), on: room)
             .asCompletable()
     }
     
     func removeMember(memberId: String, for room: Room) -> Completable {
         return network
-            .request(.removeMember,memberId:String, on: room)
+            .request(.removeMember(memberId: memberId), on: room)
             .asCompletable()
     }
     

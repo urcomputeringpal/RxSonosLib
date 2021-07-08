@@ -32,6 +32,7 @@ enum GroupManagementTarget: SonosTargetType {
             return "<MemberID>\(memberId)</MemberID><BootSeq>0</BootSeq>"
         case .removeMember(let memberId):
             return "<MemberID>\(memberId)</MemberID>"
+        }
     }
     
     var controllUrl: String {
