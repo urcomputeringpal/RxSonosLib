@@ -9,7 +9,7 @@
 import Foundation
 import AEXML
 
-class DeviceDescription: Codable {
+open class DeviceDescription: Codable {
     
     let name: String
     let modalNumber: String
@@ -19,7 +19,7 @@ class DeviceDescription: Codable {
     let softwareVersion: String
     let hardwareVersion: String
     
-    init (name: String, modalNumber: String, modalName: String, modalIcon: String, serialNumber: String, softwareVersion: String, hardwareVersion: String) {
+    public init (name: String, modalNumber: String, modalName: String, modalIcon: String, serialNumber: String, softwareVersion: String, hardwareVersion: String) {
         self.name = name
         self.modalNumber = modalNumber
         self.modalName = modalName

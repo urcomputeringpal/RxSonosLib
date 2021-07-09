@@ -20,7 +20,7 @@ open class Room: Codable {
     var uuid: String { return ssdpDevice.uuid! }
     var userAgent: String { return ssdpDevice.server }
     
-    init(ssdpDevice: SSDPDevice, deviceDescription: DeviceDescription) {
+    public init(ssdpDevice: SSDPDevice, deviceDescription: DeviceDescription) {
         self.ssdpDevice = ssdpDevice
         self.deviceDescription = deviceDescription
     }

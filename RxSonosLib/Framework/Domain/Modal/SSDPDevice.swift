@@ -26,7 +26,7 @@ open class SSDPDevice: Codable {
     let bootseq: String?
     let proxy: String?
     
-    init(ip: URL, usn: String, server: String, ext: String, st: String, location: String, cacheControl: String, uuid: String?, wifiMode: String?, variant: String?, household: String?, bootseq: String?, proxy: String?) {
+    public init(ip: URL, usn: String, server: String, ext: String, st: String, location: String, cacheControl: String, uuid: String?, wifiMode: String?, variant: String?, household: String?, bootseq: String?, proxy: String?) {
         self.ip = ip
         self.usn = usn
         self.server = server
