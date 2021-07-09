@@ -11,8 +11,8 @@ import RxSwift
 
 open class Room: Codable {
     
-    let ssdpDevice: SSDPDevice
-    let deviceDescription: DeviceDescription
+    public let ssdpDevice: SSDPDevice
+    public let deviceDescription: DeviceDescription
     
     var hasProxy: Bool { return ssdpDevice.hasProxy }
     var name: String { return deviceDescription.name }
