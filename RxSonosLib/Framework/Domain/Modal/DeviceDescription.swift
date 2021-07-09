@@ -19,7 +19,7 @@ open class DeviceDescription: Codable {
     public let softwareVersion: String
     public let hardwareVersion: String
     
-    public init (name: String, modalNumber: String, modalName: String, modalIcon: String, serialNumber: String, softwareVersion: String, hardwareVersion: String) {
+    init (name: String, modalNumber: String, modalName: String, modalIcon: String, serialNumber: String, softwareVersion: String, hardwareVersion: String) {
         self.name = name
         self.modalNumber = modalNumber
         self.modalName = modalName
