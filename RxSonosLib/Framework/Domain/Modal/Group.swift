@@ -28,12 +28,12 @@ open class Group {
     }()
     
     /// All Rooms in this group
-    internal var rooms: [Room] {
+    var rooms: [Room] {
         return [master] + slaves
     }
     
     /// Active Track for this Group
-    internal let activeTrack: BehaviorSubject<Track?> = BehaviorSubject(value: nil)
+    let activeTrack: BehaviorSubject<Track?> = BehaviorSubject(value: nil)
     internal let disposebag = DisposeBag()
     
     init(master: Room, slaves: [Room]) {
