@@ -80,6 +80,8 @@ public protocol Track {
      * collection of all Tracks description items
      */
     var description: [TrackDescription: String] { get }
+    
+    var progress: GroupProgress? { get }
 }
 
 extension Track {

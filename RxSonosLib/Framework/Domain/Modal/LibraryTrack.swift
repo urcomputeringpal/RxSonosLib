@@ -24,6 +24,8 @@ open class LibraryTrack: Track, TrackImage {
      * track url
      */
     public let uri: String
+
+    public let progress: GroupProgress?
     
     /**
      * image url
@@ -38,12 +40,13 @@ open class LibraryTrack: Track, TrackImage {
      */
     public let description: [TrackDescription: String]
     
-    init(queueItem: Int, duration: UInt, uri: String, imageUri: URL, description: [TrackDescription: String]) {
+    init(queueItem: Int, duration: UInt, uri: String, imageUri: URL, description: [TrackDescription: String], progress: GroupProgress? = nil) {
         self.queueItem = queueItem
         self.duration = duration
         self.uri = uri
         self.imageUri = imageUri
         self.description = description
+        self.progress = progress
     }
     
 }

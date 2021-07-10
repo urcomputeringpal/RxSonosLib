@@ -50,7 +50,7 @@ open class SonosInteractor {
             .flatMap { (groups) -> Single<[MusicProvider]> in
                 return GetMusicProvidersInteractor(musicProvidersRepository: RepositoryInjection.provideMusicProvidersRepository())
                     .get(values: GetMusicProvidersValues(room: groups.first?.master))
-        }   
+        }
     }
     
     /* Group */
@@ -116,6 +116,18 @@ open class SonosInteractor {
             .get(values: GetTrackImageValues(track: track))
     }
     
+    /* Singles */
+    static public func singleProgress(_ group: Group) -> Single<GroupProgress> {
+        return RepositoryInjection.provideTransportRepository().getNowPlayingProgress(for: group.master)
+    }
+    
+    static public func singleTrack(_ group: Group) -> Single<Track?> {
+        return RepositoryInjection.provideTransportRepository().getNowPlaying(for: group.master)
+    }
+    
+    static public func singleImage(_ track: Track) -> Maybe<Data> {
+        return RepositoryInjection.provideTransportRepository().getImage(for: track)
+    }
 }
 
 extension SonosInteractor {
@@ -173,6 +185,7 @@ extension SonosInteractor {
             .flatMap({ _ -> Observable<[Group]> in
                 return GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
                     .get(values: GetGroupsValues(rooms: rooms))
+                    .debug()
                     .catchError({ _ in Single<[Group]>.just([]) })
                     .asObservable()
             })

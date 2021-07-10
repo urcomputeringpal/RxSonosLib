@@ -40,6 +40,8 @@ open class MusicProviderTrack: Track, TrackImage {
      */
     public let sn: Int?
     
+    public let progress: GroupProgress?
+    
     /**
      * image url
      * can be downloaded with:
@@ -53,7 +55,7 @@ open class MusicProviderTrack: Track, TrackImage {
      */
     public let description: [TrackDescription: String]
     
-    init(sid: Int, flags: Int?, sn: Int?, queueItem: Int, duration: UInt, uri: String, imageUri: URL, description: [TrackDescription: String]) {
+    init(sid: Int, flags: Int?, sn: Int?, queueItem: Int, duration: UInt, uri: String, imageUri: URL, description: [TrackDescription: String], progress: GroupProgress? = nil) {
         self.providerId = sid
         self.flags = flags
         self.sn = sn
@@ -62,6 +64,7 @@ open class MusicProviderTrack: Track, TrackImage {
         self.uri = uri
         self.imageUri = imageUri
         self.description = description
+        self.progress = progress
     }
     
 }

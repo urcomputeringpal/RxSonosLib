@@ -32,14 +32,11 @@ open class Group {
         return [master] + slaves
     }
     
-    /// Active Track for this Group
-    internal let activeTrack: BehaviorSubject<Track?> = BehaviorSubject(value: nil)
     internal let disposebag = DisposeBag()
     
     init(master: Room, slaves: [Room]) {
         self.master = master
         self.slaves = slaves
-        observerActiveTrack()
     }
     
 }
@@ -53,15 +50,6 @@ extension Group: Equatable {
 
 private func sortRooms(room1: Room, room2: Room) -> Bool {
     return room1.uuid > room2.uuid
-}
-
-extension Group {
-    private func observerActiveTrack() {
-        SonosInteractor
-            .getTrack(self)
-            .subscribe(activeTrack)
-            .disposed(by: disposebag)
-    }
 }
 
 extension ObservableType where E == Group {
@@ -78,9 +66,7 @@ extension ObservableType where E == Group {
         return
             self
             .flatMap({ (group) -> Observable<Track?> in
-                return group
-                    .activeTrack
-                    .asObserver()
+                return SonosInteractor.getTrack(group)
             })
     }
     

@@ -16,13 +16,15 @@ class NowPlayingTrackFactory {
     
     private let trackMeta: [String: String]?
     private let currentURIMetaData: [String: String]?
+    private let progress: GroupProgress
     
-    init(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) throws {
+    init(room: URL, positionInfo: [String: String], mediaInfo: [String: String], progress: GroupProgress) throws {
         self.room = room
         self.positionInfo = positionInfo
         self.mediaInfo = mediaInfo
         self.trackMeta = try positionInfo["TrackMetaData"]?.mapMetaItem()
         self.currentURIMetaData = try mediaInfo["CurrentURIMetaData"]?.mapMetaItem()
+        self.progress = progress
     }
     
     func create() throws -> Track? {
@@ -48,7 +50,7 @@ class NowPlayingTrackFactory {
                 return nil
         }
         
-        return LibraryTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description)
+        return LibraryTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, progress: self.progress)
     }
     
     private func createTrack(uri: String?, type: MusicService) -> MusicProviderTrack? {
@@ -63,7 +65,7 @@ class NowPlayingTrackFactory {
                 return nil
         }
         
-        return MusicProviderTrack(sid: sid, flags: type.flags, sn: type.sn, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description)
+        return MusicProviderTrack(sid: sid, flags: type.flags, sn: type.sn, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, progress: self.progress)
     }
     
     private func createTVTrack() -> TVTrack? {

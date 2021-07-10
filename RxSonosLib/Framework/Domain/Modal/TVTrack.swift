@@ -25,6 +25,8 @@ open class TVTrack: Track {
      */
     public var uri: String
     
+    public let progress: GroupProgress?
+    
     /**
      * collection of all Tracks description items
      */
@@ -33,6 +35,7 @@ open class TVTrack: Track {
     internal init(queueItem: Int, uri: String) {
         self.queueItem = queueItem
         self.uri = uri
+        self.progress = nil
     }
     
 }
