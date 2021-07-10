@@ -116,7 +116,8 @@ open class SonosInteractor {
             .get(values: GetTrackImageValues(track: track))
     }
     
-    /* Singles */
+    // MARK: Singles
+    
     static public func singleProgress(_ group: Group) -> Single<GroupProgress> {
         return RepositoryInjection.provideTransportRepository().getNowPlayingProgress(for: group.master)
     }
@@ -127,6 +128,14 @@ open class SonosInteractor {
     
     static public func singleImage(_ track: Track) -> Maybe<Data> {
         return RepositoryInjection.provideTransportRepository().getImage(for: track)
+    }
+    
+    static public func singleTransportState(_ group: Group) -> Single<TransportState> {
+        return RepositoryInjection.provideTransportRepository().getTransportState(for: group.master)
+    }
+    
+    static public func singleVolume(_ group: Group) -> Single<Int> {
+        return RepositoryInjection.provideRenderingControlRepository().getVolume(for: group)
     }
 }
 
