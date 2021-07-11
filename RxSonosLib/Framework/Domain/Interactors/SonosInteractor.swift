@@ -137,6 +137,16 @@ open class SonosInteractor {
     static public func singleVolume(_ group: Group) -> Single<Int> {
         return RepositoryInjection.provideRenderingControlRepository().getVolume(for: group)
     }
+    
+    static public func singleMute(_ group: Group) -> Single<Bool> {
+        return Observable<Room>
+            .from(group.rooms)
+            .flatMap { Room in
+                return RepositoryInjection.provideRenderingControlRepository().getMute(room: Room).asObservable()
+            }
+            .reduce(true) { $0 && $1 }
+            .asSingle()
+    }
 }
 
 extension SonosInteractor {
