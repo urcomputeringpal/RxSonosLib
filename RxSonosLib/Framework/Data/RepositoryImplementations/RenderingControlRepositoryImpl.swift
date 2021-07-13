@@ -35,6 +35,26 @@ class RenderingControlRepositoryImpl: RenderingControlRepository {
         return Single.zip(roomObservables).asCompletable()
     }
     
+    func change(volume: Int, for group: Group) -> Completable {
+        let maxVolume = 100
+        let rooms = [group.master] + group.slaves
+        let roomObservables = rooms.map(mapRoomToVolume)
+        return Single.zip(roomObservables).asObservable()
+            .flatMap({ (volumes) -> Observable<[String: String]> in
+                let vol = volumes.reduce(0, +) / volumes.count
+                let delta = volume - vol
+                if delta == 0 { return Observable<[String: String]>.empty() }
+                let multi = delta > 0 ? (maxVolume - vol) / delta : vol / delta
+                let volumeObs = Observable.from( volumes.map { $0 + (delta > 0 ? (maxVolume - $0) / multi : $0 / multi) })
+                let roomObs = Observable.from(rooms)
+                return Observable.zip(volumeObs, roomObs).flatMap { [weak self] (volume, room) -> Observable<[String: String]> in
+                    guard let self = self else {return Observable<[String: String]>.empty()}
+                    return self.network.request(.setVolume(volume), on: room).asObservable()
+                }
+            })
+            .ignoreElements()
+    }
+    
     func setMute(room: Room, enabled: Bool) -> Completable {
         return network
             .request(.setMute(enabled), on: room)

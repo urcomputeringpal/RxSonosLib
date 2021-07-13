@@ -99,6 +99,11 @@ open class SonosInteractor {
             .get(values: SetVolumeValues(group: group, volume: volume))
     }
     
+    static public func change(volume: Int, for group: Group) -> Completable {
+        return RepositoryInjection.provideRenderingControlRepository().change(volume: volume, for: group)
+    }
+
+    
     /* Room */
     static public func getMute(for room: Room) -> Observable<Bool> {
         return GetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())

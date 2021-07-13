@@ -19,6 +19,8 @@ protocol RenderingControlRepository {
     
     func set(volume: Int, for group: Group) -> Completable
     
+    func change(volume: Int, for group: Group) -> Completable
+
     func setMute(room: Room, enabled: Bool) -> Completable
     
     func getMute(room: Room) -> Single<Bool>
