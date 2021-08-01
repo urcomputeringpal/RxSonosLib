@@ -40,6 +40,8 @@ open class MusicProviderTrack: Track, TrackImage {
      */
     public let sn: Int?
     
+    public var contentType: TrackContentType
+    
     public let progress: GroupProgress?
     
     /**
@@ -55,7 +57,7 @@ open class MusicProviderTrack: Track, TrackImage {
      */
     public let description: [TrackDescription: String]
     
-    init(sid: Int, flags: Int?, sn: Int?, queueItem: Int, duration: UInt, uri: String, imageUri: URL, description: [TrackDescription: String], progress: GroupProgress? = nil) {
+    init(sid: Int, flags: Int?, sn: Int?, queueItem: Int, duration: UInt, uri: String, imageUri: URL, description: [TrackDescription: String], contentType: TrackContentType?, progress: GroupProgress? = nil) {
         self.providerId = sid
         self.flags = flags
         self.sn = sn
@@ -64,6 +66,7 @@ open class MusicProviderTrack: Track, TrackImage {
         self.uri = uri
         self.imageUri = imageUri
         self.description = description
+        self.contentType = contentType ?? .musicTrack
         self.progress = progress
     }
     

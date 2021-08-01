@@ -12,6 +12,8 @@ public enum MusicService {
     case musicProvider(sid: Int, flags: Int?, sn: Int?)
     case tv
     case library
+    case airConnect
+    case airplay
 }
 
 extension MusicService: Equatable {
@@ -24,6 +26,10 @@ extension MusicService: Equatable {
             return 9999
         case .library:
             return 9998
+        case .airConnect:
+            return 9997
+        case .airplay:
+            return 9996
         }
 
     }
@@ -72,10 +78,19 @@ extension MusicService {
         }
         
         if let service = try url.match(with: "([a-zA-Z0-9-]+):")?.first {
-            if service == "x-sonos-htastream" {
-            return MusicService.tv
-            } else if service == "x-file-cifs" {
-                return MusicService.library
+            switch service {
+            case "x-sonos-htastream":
+                return .tv
+            case "x-file-cifs":
+                return .library
+            case "x-sonos-vli":
+                if url.contains("airplay:") {
+                    return .airplay
+                }
+            case "x-sonos-http", "http":
+                return .airConnect
+            default:
+                return nil
             }
         }
         

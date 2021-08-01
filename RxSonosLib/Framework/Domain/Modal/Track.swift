@@ -19,6 +19,35 @@ public enum TrackDescription: String {
     case information = "INFORMATION"
 }
 
+/// Contant type of the track
+public enum TrackContentType {
+    case musicTrack,
+         longMusicTrack,
+         podcast,
+         lineInHomeTheater,
+         audioBroadcast
+    
+    static let LongplayTrackDuration: UInt = 60*15
+    
+    static func by(class mediaClass: String?, duration: UInt) -> Self? {
+        guard let mediaClass = mediaClass, !mediaClass.isEmpty else {
+            return nil
+        }
+        switch mediaClass {
+        case "object.item.audioItem.podcast":
+            return .podcast
+        case "object.item.audioItem.linein.homeTheater":
+            return .lineInHomeTheater
+        case "object.item.audioItem.audioBroadcast":
+            return .audioBroadcast
+        case "object.item.audioItem.musicTrack":
+            return duration < LongplayTrackDuration ? musicTrack : longMusicTrack
+        default:
+            return nil
+        }
+    }
+}
+
 extension TrackDescription: Comparable {
     
     private var intValue: Int {
@@ -81,7 +110,10 @@ public protocol Track {
      */
     var description: [TrackDescription: String] { get }
     
+    var contentType: TrackContentType { get }
+    
     var progress: GroupProgress? { get }
+    
 }
 
 extension Track {
@@ -117,6 +149,7 @@ extension Track {
      */
     public var information: String? { return description[TrackDescription.information] }
     
+    public var contentType: TrackContentType { .musicTrack }
 }
 
 extension ObservableType where E == Track {

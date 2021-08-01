@@ -26,15 +26,18 @@ open class TVTrack: Track {
     public var uri: String
     
     public let progress: GroupProgress?
+
+    public var contentType: TrackContentType
     
     /**
      * collection of all Tracks description items
      */
     public var description = [TrackDescription: String]()
     
-    internal init(queueItem: Int, uri: String) {
+    internal init(queueItem: Int, uri: String, contentType: TrackContentType?) {
         self.queueItem = queueItem
         self.uri = uri
+        self.contentType = contentType ?? .lineInHomeTheater
         self.progress = nil
     }
     
