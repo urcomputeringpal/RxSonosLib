@@ -25,7 +25,9 @@ public enum TrackContentType {
          longMusicTrack,
          podcast,
          lineInHomeTheater,
-         audioBroadcast
+         audioBroadcast,
+         lineIn,
+         airplay
     
     static let LongplayTrackDuration: UInt = 60*15
     
@@ -42,6 +44,10 @@ public enum TrackContentType {
             return .audioBroadcast
         case "object.item.audioItem.musicTrack":
             return duration < LongplayTrackDuration ? musicTrack : longMusicTrack
+        case "object.item.audioItem.linein":
+        return .lineIn
+        case "object.item.audioItem.linein.airplay":
+            return.airplay
         default:
             return nil
         }

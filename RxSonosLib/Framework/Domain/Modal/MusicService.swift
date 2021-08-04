@@ -14,6 +14,7 @@ public enum MusicService {
     case library
     case airConnect
     case airplay
+    case linein
 }
 
 extension MusicService: Equatable {
@@ -30,6 +31,8 @@ extension MusicService: Equatable {
             return 9997
         case .airplay:
             return 9996
+        case .linein:
+            return 9995
         }
 
     }
@@ -89,6 +92,8 @@ extension MusicService {
                 }
             case "x-sonos-http", "http":
                 return .airConnect
+            case "x-rincon-stream":
+                return .linein
             default:
                 return nil
             }

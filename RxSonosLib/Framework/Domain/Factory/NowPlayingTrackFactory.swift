@@ -34,7 +34,7 @@ class NowPlayingTrackFactory {
             return createTVTrack()
         case .library:
             return createLibraryTrack(uri: uri)
-        case .airConnect, .airplay:
+        case .airConnect, .airplay, .linein:
             return createTrack(uri: uri, usingTrackTitle: true)
         default:
             return createMusicProviderTrack(uri: uri, type: type)
@@ -88,11 +88,12 @@ class NowPlayingTrackFactory {
             let queueItem = Int(queueItemString),
             let uri = uri,
             let imageUri = self.getImageUrl(uri: uri),
-            let description = getDescription(usingTrackTitle: usingTrackTitle) else {
+            let contentType = self.getContentType(),
+            let description = getDescription(contentType) else {
                 return nil
         }
         
-        return ANyTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, contentType: self.getContentType(), progress: self.progress)
+        return ANyTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, contentType: contentType, progress: self.progress)
     }
 
     private func getImageUrl(uri: String) -> URL? {
@@ -104,8 +105,8 @@ class NowPlayingTrackFactory {
     }
     private func getContentType() -> TrackContentType? {
         let duration = (self.positionInfo["TrackDuration"] ?? self.mediaInfo["TrackDuration"])?.timeToSeconds() ?? 0
-        return TrackContentType.by(class: trackMeta?["class"], duration: duration)
-            ?? TrackContentType.by(class: currentURIMetaData?["class"], duration: duration)
+        return TrackContentType.by(class: currentURIMetaData?["class"], duration: duration)
+        ?? TrackContentType.by(class: trackMeta?["class"], duration: duration)
     }
     
     private func getMusicService() throws -> (url: String, service: MusicService)? {
@@ -119,10 +120,16 @@ class NowPlayingTrackFactory {
         return nil
     }
     
-    private func getDescription(usingTrackTitle: Bool = false) -> [TrackDescription: String]? {
-        guard let title = usingTrackTitle ?
-                (trackMeta?["title"] ?? currentURIMetaData?["title"])
-                : (currentURIMetaData?["title"] ?? trackMeta?["title"]) else { return nil }
+    private func getDescription(_ contentType: TrackContentType = .musicTrack) -> [TrackDescription: String]? {
+        var title: String?
+        switch contentType {
+        case .airplay:
+            title = trackMeta?["title"] ?? currentURIMetaData?["title"]
+        default:
+            title = currentURIMetaData?["title"] ?? trackMeta?["title"]
+        }
+        guard let title = title else { return nil }
+        
         var description = [TrackDescription.title: title]
         
         if let artist = trackMeta?["creator"] {
