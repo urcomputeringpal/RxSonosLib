@@ -73,6 +73,12 @@ class TransportRepositoryImpl: TransportRepository {
         return network.request(.stop, on: group.master)
             .asCompletable()
     }
+    
+    func seekTrack(time: String, for room: Room) -> Completable {
+        return network.request(.seekTime(time: time), on: room)
+            .asCompletable()
+    }
+    
 }
 
 private extension TransportRepositoryImpl {

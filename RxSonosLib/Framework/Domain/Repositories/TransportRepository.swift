@@ -29,4 +29,7 @@ protocol TransportRepository {
     
     func setStop(group: Group) -> Completable
     
+    func seekTrack(time: String, for room: Room) -> Completable
+
+    
 }

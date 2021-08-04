@@ -79,6 +79,11 @@ open class SonosInteractor {
             .get(values: SetTransportStateValues(group: group, state: state))
     }
     
+    static public func seekTrack(time: String, for group: Group) -> Completable {
+        return SeekTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: SeekTrackValues(group: group, time: time))
+    }
+    
     static public func setNextTrack(_ group: Group) -> Completable {
         return SetNextTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: SetNextTrackValues(group: group))
@@ -209,7 +214,6 @@ extension SonosInteractor {
             .flatMap({ _ -> Observable<[Group]> in
                 return GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
                     .get(values: GetGroupsValues(rooms: rooms))
-                    .debug()
                     .catchError({ _ in Single<[Group]>.just([]) })
                     .asObservable()
             })

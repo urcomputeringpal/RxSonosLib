@@ -19,7 +19,7 @@ enum TransportTarget: SonosTargetType {
     case transportInfo
     case mediaInfo
     //    case changeTrack(number: Int)
-    //    case seekTime(time: String)
+    case seekTime(time: String)
     //    case removeTrackFromQueue(number: Int)
     //    case removeAllTracksFromQueue
     //    case addTrackToQueueEnd(uri: String)
@@ -40,8 +40,10 @@ enum TransportTarget: SonosTargetType {
             return "Previous"
         case .next:
             return "Next"
-//        case .changeTrack, .seekTime:
+//        case .changeTrack:
 //            return "Seek"
+        case .seekTime:
+            return "Seek"
 //        case .addTrackToQueueEnd, .addTrackToQueuePlayNext:
 //            return "AddURIToQueue"
 //        case .removeTrackFromQueue:
@@ -77,8 +79,8 @@ enum TransportTarget: SonosTargetType {
 //            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>"
 //        case .removeTrackFromQueue(let number):
 //            return "<InstanceID>0</InstanceID><ObjectID>Q:0/\(number)</ObjectID>"
-//        case .seekTime(let time):
-//            return "<InstanceID>0</InstanceID><Unit>REL_TIME</Unit><Target>\(time)</Target>"
+        case .seekTime(let time):
+            return "<InstanceID>0</InstanceID><Unit>REL_TIME</Unit><Target>\(time)</Target>"
 //        case .changeTrack(let number):
 //            return "<InstanceID>0</InstanceID><Unit>TRACK_NR</Unit><Target>\(number)</Target>"
         }
