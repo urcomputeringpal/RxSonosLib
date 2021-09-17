@@ -186,7 +186,7 @@ extension ObservableType where E == Group {
             .set(mute: enabled)
     }
     
-    public func setAVTransportURI(masterUrl: String, room: Room) -> Completable {
+    public func setAVTransportURI(masterUrl: String, group: Group) -> Completable {
         return
             self
             .take(1)
