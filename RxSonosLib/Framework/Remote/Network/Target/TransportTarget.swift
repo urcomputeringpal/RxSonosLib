@@ -70,7 +70,7 @@ enum TransportTarget: SonosTargetType {
         case .play, .pause, .stop, .previous, .next:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
         case .setQueue(let uri), .setAVTransportURI(let uri):
-            return "<InstanceID>0</InstanceID><CurrentURI>\(uri)</CurrentURI><CurrentURIMetaData></CurrentURIMetaData>"
+            return "<InstanceID>0</InstanceID><CurrentURI>x-rincon:\(uri)</CurrentURI><CurrentURIMetaData></CurrentURIMetaData>"
 //        case .addTrackToQueuePlayNext(let uri):
 //            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>"
 //        case .addTrackToQueueEnd(let uri):
