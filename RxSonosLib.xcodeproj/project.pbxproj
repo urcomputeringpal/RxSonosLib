@@ -10,6 +10,7 @@
 		4E91F92E1A58EE1BDA9D2FA3 /* Pods_RxSonosLibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E2E069A6996FE20C1D0423 /* Pods_RxSonosLibTests.framework */; };
 		7B4592187068D8F602694395 /* Pods_RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD63C843FC788D90A4D11 /* Pods_RxSonosLib.framework */; };
 		DB3899271F8B6E4B0903A18B /* Pods_iOS_Demo_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEA7B5F955D41418E1FFB49 /* Pods_iOS_Demo_App.framework */; };
+		DF1504B526F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1504B426F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift */; };
 		DF1636FD269718F700442CC4 /* GroupManagementTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1636FC269718F700442CC4 /* GroupManagementTarget.swift */; };
 		DF1636FF26972A0F00442CC4 /* GroupManagementRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1636FE26972A0F00442CC4 /* GroupManagementRepositoryImpl.swift */; };
 		DF16370126972A7000442CC4 /* GroupManagementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16370026972A7000442CC4 /* GroupManagementRepository.swift */; };
@@ -215,6 +216,7 @@
 		9CEA7B5F955D41418E1FFB49 /* Pods_iOS_Demo_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Demo_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B227B7F7727BC927FC34A8A6 /* Pods-RxSonosLibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLibTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests.release.xcconfig"; sourceTree = "<group>"; };
 		D58005EAF65D320D84295B4D /* Pods-RxSonosLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLib/Pods-RxSonosLib.debug.xcconfig"; sourceTree = "<group>"; };
+		DF1504B426F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAVTransportURIInteractor.swift; sourceTree = "<group>"; };
 		DF1636FC269718F700442CC4 /* GroupManagementTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementTarget.swift; sourceTree = "<group>"; };
 		DF1636FE26972A0F00442CC4 /* GroupManagementRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementRepositoryImpl.swift; sourceTree = "<group>"; };
 		DF16370026972A7000442CC4 /* GroupManagementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementRepository.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 				F8B9470D209794C3004F1A33 /* GetMusicProvidersInteractor.swift */,
 				DF16370226972E3A00442CC4 /* AddMemberInteractor.swift */,
 				DF16370426972E4D00442CC4 /* RemoveMemberInteractor.swift */,
+				DF1504B426F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1100,7 +1103,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = Uberweb;
 				TargetAttributes = {
 					F81A05A82060280A00897738 = {
@@ -1409,6 +1412,7 @@
 				F81A05E5206028D600897738 /* Error+RxSonosLib.swift in Sources */,
 				F81A05F0206028D600897738 /* DeviceDescription.swift in Sources */,
 				F8860E8D2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift in Sources */,
+				DF1504B526F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift in Sources */,
 				F8181C5821394B7D00C8DE52 /* GroupTarget.swift in Sources */,
 				F8181C6021394BCD00C8DE52 /* MusicTarget.swift in Sources */,
 				F83D2104207540A6001ABC9D /* RenderingControlRepositoryImpl.swift in Sources */,
@@ -1531,7 +1535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UA5PQ9SVT8;
 				INFOPLIST_FILE = "$(SRCROOT)/RxSonosLib/iOS Demo App/Common/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uberweb.Demo-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1548,7 +1552,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UA5PQ9SVT8;
 				INFOPLIST_FILE = "$(SRCROOT)/RxSonosLib/iOS Demo App/Common/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uberweb.Demo-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1561,7 +1565,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D58005EAF65D320D84295B4D /* Pods-RxSonosLib.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1571,7 +1575,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RxSonosLib/Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uberweb.RxSonosLib;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1587,7 +1591,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0C41CFD1AB6123F24056B5A /* Pods-RxSonosLib.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1597,7 +1601,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RxSonosLib/Framework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uberweb.RxSonosLib;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1616,7 +1620,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UA5PQ9SVT8;
 				INFOPLIST_FILE = RxSonosLibTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uberweb.RxSonosLibTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1632,7 +1636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UA5PQ9SVT8;
 				INFOPLIST_FILE = RxSonosLibTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uberweb.RxSonosLibTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1666,6 +1670,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1691,7 +1696,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1729,6 +1734,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1748,7 +1754,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
