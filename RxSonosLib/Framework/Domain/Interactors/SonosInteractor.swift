@@ -120,6 +120,11 @@ open class SonosInteractor {
             .get(values: SetMuteValues(room: room, enabled: enabled))
     }
     
+    static public func setAVTransportURI(masterUrl: String, for room: Room) -> Completable {
+        return SetAVTransportURIInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: SetAVTransportURIValues(room: room, masterUrl: masterUrl))
+    }
+    
     /* Track */
     static public func getTrackImage(_ track: Track) -> Observable<Data?> {
         return GetTrackImageInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
