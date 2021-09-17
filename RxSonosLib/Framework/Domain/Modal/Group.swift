@@ -192,7 +192,7 @@ extension ObservableType where E == Group {
             .take(1)
             .asSingle()
             .flatMapCompletable({ (group) -> Completable in
-                return SonosInteractor.setAVTransportURI(masterUrl: masterUrl, for: room)
+                return SonosInteractor.setAVTransportURI(masterUrl: masterUrl, for: group)
             })
     }
 }

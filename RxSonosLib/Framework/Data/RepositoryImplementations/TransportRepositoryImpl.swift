@@ -74,8 +74,8 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
     
-    func setAVTransportURI(for room: Room, masterURI: String) -> Completable {
-        return network.request(.setAVTransportURI(uri: masterURI), on: room)
+    func setAVTransportURI(for group: Group, masterURI: String) -> Completable {
+        return network.request(.setAVTransportURI(uri: masterURI), on: group.master)
             .asCompletable()
     }
 }
