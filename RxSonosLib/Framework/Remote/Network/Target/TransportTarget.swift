@@ -24,8 +24,8 @@ enum TransportTarget: SonosTargetType {
     //    case removeAllTracksFromQueue
     //    case addTrackToQueueEnd(uri: String)
     //    case addTrackToQueuePlayNext(uri: String)
-    //    case setQueue(uri: String)
-    //    case setAVTransportURI(uri: String)
+    case setQueue(uri: String)
+    case setAVTransportURI(uri: String)
     //    case becomeCoordinatorOfStandaloneGroup
     
     var action: String {
@@ -54,10 +54,10 @@ enum TransportTarget: SonosTargetType {
             return "GetMediaInfo"
 //        case .removeAllTracksFromQueue:
 //            return "RemoveAllTracksFromQueue"
-//        case .setQueue:
-//            return "SetAVTransportURI"
-//        case .setAVTransportURI:
-//            return "SetAVTransportURI"
+        case .setQueue:
+            return "SetAVTransportURI"
+        case .setAVTransportURI:
+            return "SetAVTransportURI"
 //        case .becomeCoordinatorOfStandaloneGroup:
 //            return "BecomeCoordinatorOfStandaloneGroup"
         }
@@ -69,8 +69,8 @@ enum TransportTarget: SonosTargetType {
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
         case .play, .pause, .stop, .previous, .next:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
-//        case .setQueue(let uri), .setAVTransportURI(let uri):
-//            return "<InstanceID>0</InstanceID><CurrentURI>\(uri)</CurrentURI><CurrentURIMetaData></CurrentURIMetaData>"
+        case .setQueue(let uri), .setAVTransportURI(let uri):
+            return "<InstanceID>0</InstanceID><CurrentURI>\(uri)</CurrentURI><CurrentURIMetaData></CurrentURIMetaData>"
 //        case .addTrackToQueuePlayNext(let uri):
 //            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>"
 //        case .addTrackToQueueEnd(let uri):
