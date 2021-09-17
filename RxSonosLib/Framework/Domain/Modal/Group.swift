@@ -187,12 +187,6 @@ extension ObservableType where E == Group {
     }
     
     public func setAVTransportURI(masterUrl: String, group: Group) -> Completable {
-        return
-            self
-            .take(1)
-            .asSingle()
-            .flatMapCompletable({ (group) -> Completable in
-                return SonosInteractor.setAVTransportURI(masterUrl: masterUrl, for: group)
-            })
+        return SonosInteractor.setAVTransportURI(masterUrl: masterUrl, for: group)
     }
 }
