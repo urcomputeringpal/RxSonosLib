@@ -29,6 +29,6 @@ protocol TransportRepository {
     
     func setStop(group: Group) -> Completable
     
-    func setAVTransportURI(for room: Room) -> Completable
+    func setAVTransportURI(for room: Room, masterURI: String) -> Completable
     
 }
