@@ -30,11 +30,6 @@ open class SonosInteractor {
         }
     }
     
-    static public func stopSubscription() {
-        shared.allGroups.dispose()
-        shared.allRooms.dispose()
-    }
-    
     static public func getActiveGroup() -> Observable<Group> {
         return shared
             .activeGroup
