@@ -11,6 +11,7 @@
 		7B4592187068D8F602694395 /* Pods_RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FD63C843FC788D90A4D11 /* Pods_RxSonosLib.framework */; };
 		DB3899271F8B6E4B0903A18B /* Pods_iOS_Demo_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEA7B5F955D41418E1FFB49 /* Pods_iOS_Demo_App.framework */; };
 		DF1504B526F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1504B426F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift */; };
+		DF1504B826F5F36F00DBB5A8 /* BecomeCoordinatorOfStandaloneGroupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1504B726F5F36F00DBB5A8 /* BecomeCoordinatorOfStandaloneGroupInteractor.swift */; };
 		DF1636FD269718F700442CC4 /* GroupManagementTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1636FC269718F700442CC4 /* GroupManagementTarget.swift */; };
 		DF1636FF26972A0F00442CC4 /* GroupManagementRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1636FE26972A0F00442CC4 /* GroupManagementRepositoryImpl.swift */; };
 		DF16370126972A7000442CC4 /* GroupManagementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16370026972A7000442CC4 /* GroupManagementRepository.swift */; };
@@ -217,6 +218,7 @@
 		B227B7F7727BC927FC34A8A6 /* Pods-RxSonosLibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLibTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests.release.xcconfig"; sourceTree = "<group>"; };
 		D58005EAF65D320D84295B4D /* Pods-RxSonosLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLib/Pods-RxSonosLib.debug.xcconfig"; sourceTree = "<group>"; };
 		DF1504B426F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAVTransportURIInteractor.swift; sourceTree = "<group>"; };
+		DF1504B726F5F36F00DBB5A8 /* BecomeCoordinatorOfStandaloneGroupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeCoordinatorOfStandaloneGroupInteractor.swift; sourceTree = "<group>"; };
 		DF1636FC269718F700442CC4 /* GroupManagementTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementTarget.swift; sourceTree = "<group>"; };
 		DF1636FE26972A0F00442CC4 /* GroupManagementRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementRepositoryImpl.swift; sourceTree = "<group>"; };
 		DF16370026972A7000442CC4 /* GroupManagementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementRepository.swift; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 				DF16370226972E3A00442CC4 /* AddMemberInteractor.swift */,
 				DF16370426972E4D00442CC4 /* RemoveMemberInteractor.swift */,
 				DF1504B426F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift */,
+				DF1504B726F5F36F00DBB5A8 /* BecomeCoordinatorOfStandaloneGroupInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1375,6 +1378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF1504B826F5F36F00DBB5A8 /* BecomeCoordinatorOfStandaloneGroupInteractor.swift in Sources */,
 				F8627F43206BFD5200571085 /* GetTransportStateInteractor.swift in Sources */,
 				DF16370326972E3A00442CC4 /* AddMemberInteractor.swift in Sources */,
 				F86B3440206A8EB900979A5F /* String+Time.swift in Sources */,

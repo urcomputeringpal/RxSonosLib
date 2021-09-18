@@ -31,4 +31,6 @@ protocol TransportRepository {
     
     func setAVTransportURI(for group: Group, masterURI: String) -> Completable
     
+    func setBecomeCoordinatorOfStandaloneGroup(for group: Group, idx: Int) -> Completable
+    
 }

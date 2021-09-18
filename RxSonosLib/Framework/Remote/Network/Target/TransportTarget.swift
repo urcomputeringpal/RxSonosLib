@@ -26,7 +26,7 @@ enum TransportTarget: SonosTargetType {
     //    case addTrackToQueuePlayNext(uri: String)
     case setQueue(uri: String)
     case setAVTransportURI(uri: String)
-    //    case becomeCoordinatorOfStandaloneGroup
+    case setBecomeCoordinatorOfStandaloneGroup
     
     var action: String {
         switch self {
@@ -58,14 +58,14 @@ enum TransportTarget: SonosTargetType {
             return "SetAVTransportURI"
         case .setAVTransportURI:
             return "SetAVTransportURI"
-//        case .becomeCoordinatorOfStandaloneGroup:
-//            return "BecomeCoordinatorOfStandaloneGroup"
+        case .setBecomeCoordinatorOfStandaloneGroup:
+            return "BecomeCoordinatorOfStandaloneGroup"
         }
     }
     
     var arguments: String? {
         switch self {
-        case .positionInfo, .transportInfo, .mediaInfo/*, .removeAllTracksFromQueue, .becomeCoordinatorOfStandaloneGroup*/:
+        case .positionInfo, .transportInfo, .mediaInfo, .setBecomeCoordinatorOfStandaloneGroup/*, .removeAllTracksFromQueue, */:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
         case .play, .pause, .stop, .previous, .next:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"

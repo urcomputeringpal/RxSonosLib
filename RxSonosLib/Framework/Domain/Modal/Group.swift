@@ -189,4 +189,8 @@ extension ObservableType where E == Group {
     public func setAVTransportURI(masterUrl: String, group: Group) -> Completable {
         return SonosInteractor.setAVTransportURI(masterUrl: masterUrl, for: group)
     }
+    
+    public func setBecomeCoordinatorOfStandaloneGroup(idx: Int, group: Group) -> Completable {
+        return SonosInteractor.setBecomeCoordinatorOfStandaloneGroup(idx: idx, for: group)
+    }
 }

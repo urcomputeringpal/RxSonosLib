@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 class TransportRepositoryImpl: TransportRepository {
-    
+
     private let network = LocalNetwork<TransportTarget>()
     
     func getNowPlaying(for room: Room) -> Single<Track?> {
@@ -76,6 +76,12 @@ class TransportRepositoryImpl: TransportRepository {
     
     func setAVTransportURI(for group: Group, masterURI: String) -> Completable {
         return network.request(.setAVTransportURI(uri: masterURI), on: group.master)
+            .asCompletable()
+    }
+    
+    func setBecomeCoordinatorOfStandaloneGroup(for group: Group, idx: Int) -> Completable {
+        let slave = group.slaves[idx]
+        return network.request(.setBecomeCoordinatorOfStandaloneGroup, on: slave)
             .asCompletable()
     }
 }

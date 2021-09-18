@@ -125,6 +125,11 @@ open class SonosInteractor {
             .get(values: SetAVTransportURIValues(group: group, masterUrl: masterUrl))
     }
     
+    static public func setBecomeCoordinatorOfStandaloneGroup(idx: Int, for group: Group) -> Completable {
+        return SetBecomeCoordinatorOfStandaloneGroupInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: SetBecomeCoordinatorOfStandaloneGroupValues(group: group, idx: idx))
+    }
+    
     /* Track */
     static public func getTrackImage(_ track: Track) -> Observable<Data?> {
         return GetTrackImageInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
