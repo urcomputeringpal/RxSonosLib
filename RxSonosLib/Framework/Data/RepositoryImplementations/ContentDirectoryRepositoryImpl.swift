@@ -19,6 +19,12 @@ class ContentDirectoryRepositoryImpl: ContentDirectoryRepository {
             .map(mapDataToQueue(room: room))
     }
     
+    func getFavorites(for room: Room) -> Single<[MusicProviderTrack]> {
+        return network
+            .request(.favorites, on: room)
+            .map(mapDataToQueue(room: room))
+    }
+    
 }
 
 private extension ContentDirectoryRepositoryImpl {
