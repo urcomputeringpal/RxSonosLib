@@ -17,6 +17,7 @@
 		DF16370126972A7000442CC4 /* GroupManagementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16370026972A7000442CC4 /* GroupManagementRepository.swift */; };
 		DF16370326972E3A00442CC4 /* AddMemberInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16370226972E3A00442CC4 /* AddMemberInteractor.swift */; };
 		DF16370526972E4D00442CC4 /* RemoveMemberInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16370426972E4D00442CC4 /* RemoveMemberInteractor.swift */; };
+		DFF3163026F9E3AC00A92E65 /* GetFavoritesQueueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF3162F26F9E3AC00A92E65 /* GetFavoritesQueueInteractor.swift */; };
 		F80034362069662500D7C0FB /* TransportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80034302069644300D7C0FB /* TransportRepository.swift */; };
 		F80034372069662900D7C0FB /* TransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */; };
 		F800343D206967D000D7C0FB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = F800343C206967D000D7C0FB /* Track.swift */; };
@@ -224,6 +225,7 @@
 		DF16370026972A7000442CC4 /* GroupManagementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementRepository.swift; sourceTree = "<group>"; };
 		DF16370226972E3A00442CC4 /* AddMemberInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberInteractor.swift; sourceTree = "<group>"; };
 		DF16370426972E4D00442CC4 /* RemoveMemberInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMemberInteractor.swift; sourceTree = "<group>"; };
+		DFF3162F26F9E3AC00A92E65 /* GetFavoritesQueueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoritesQueueInteractor.swift; sourceTree = "<group>"; };
 		E0C41CFD1AB6123F24056B5A /* Pods-RxSonosLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLib/Pods-RxSonosLib.release.xcconfig"; sourceTree = "<group>"; };
 		F80034302069644300D7C0FB /* TransportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportRepository.swift; sourceTree = "<group>"; };
 		F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 				DF16370426972E4D00442CC4 /* RemoveMemberInteractor.swift */,
 				DF1504B426F4D5D100DBB5A8 /* SetAVTransportURIInteractor.swift */,
 				DF1504B726F5F36F00DBB5A8 /* BecomeCoordinatorOfStandaloneGroupInteractor.swift */,
+				DFF3162F26F9E3AC00A92E65 /* GetFavoritesQueueInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1402,6 +1405,7 @@
 				F8181C6921394D7000C8DE52 /* QueueTarget.swift in Sources */,
 				F8860E7E2074D89300BF6A7E /* MusicProviderTrack.swift in Sources */,
 				F8A64DF22087F432003F777E /* SetNextTrackInteractor.swift in Sources */,
+				DFF3163026F9E3AC00A92E65 /* GetFavoritesQueueInteractor.swift in Sources */,
 				F8B9470820979113004F1A33 /* MusicProvidersRepositoryImpl.swift in Sources */,
 				F8860E8F207507F500BF6A7E /* GetGroupQueueInteractor.swift in Sources */,
 				F81A05EF206028D600897738 /* Group.swift in Sources */,

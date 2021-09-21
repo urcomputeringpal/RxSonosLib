@@ -114,6 +114,14 @@ extension ObservableType where E == Group {
             })
     }
     
+    public func getFavorites() -> Observable<[MusicProviderTrack]> {
+        return
+            self
+            .flatMap({ (group) -> Observable<[MusicProviderTrack]> in
+                return SonosInteractor.getFavorites(group)
+            })
+    }
+    
     public func getTransportState() -> Observable<TransportState> {
         return
             self
