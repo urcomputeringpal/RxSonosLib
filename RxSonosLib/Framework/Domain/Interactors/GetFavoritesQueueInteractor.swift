@@ -27,7 +27,7 @@ class GetFavoritesQueueInteractor: ObservableInteractor {
         self.contentDirectoryRepository = contentDirectoryRepository
     }
     
-    func buildInteractorObservable(values: GetFavoritesQueueValues?) -> Observable<[MusicProviderTrack]> {
+    func buildInteractorObservable(values: GetFavoritesQueueValues?) -> Observable<[FavProviderItem]> {
         
         guard let masterRoom = values?.group.master else {
             return Observable.error(SonosError.invalidImplementation)
@@ -40,7 +40,7 @@ class GetFavoritesQueueInteractor: ObservableInteractor {
 }
 
 private extension GetFavoritesQueueInteractor {
-    func mapToQueue(for masterRoom: Room) -> ((Int) -> Observable<[MusicProviderTrack]>) {
+    func mapToQueue(for masterRoom: Room) -> ((Int) -> Observable<[FavProviderItem]>) {
         return { _ in
             return self.contentDirectoryRepository
                 .getFavorites(for: masterRoom)

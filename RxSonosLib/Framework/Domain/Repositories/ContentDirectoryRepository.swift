@@ -12,6 +12,6 @@ import RxSwift
 protocol ContentDirectoryRepository {
     
     func getQueue(for room: Room) -> Single<[MusicProviderTrack]>
-    func getFavorites(for room: Room) -> Single<[MusicProviderTrack]>
+    func getFavorites(for room: Room) -> Single<[FavProviderItem]>
     
 }

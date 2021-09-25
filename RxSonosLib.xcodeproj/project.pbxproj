@@ -17,6 +17,8 @@
 		DF16370126972A7000442CC4 /* GroupManagementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16370026972A7000442CC4 /* GroupManagementRepository.swift */; };
 		DF16370326972E3A00442CC4 /* AddMemberInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16370226972E3A00442CC4 /* AddMemberInteractor.swift */; };
 		DF16370526972E4D00442CC4 /* RemoveMemberInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16370426972E4D00442CC4 /* RemoveMemberInteractor.swift */; };
+		DF9E973226FF9906007C734B /* FavProviderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9E973126FF9905007C734B /* FavProviderItem.swift */; };
+		DF9E973426FF993A007C734B /* FavFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9E973326FF993A007C734B /* FavFactory.swift */; };
 		DFF3163026F9E3AC00A92E65 /* GetFavoritesQueueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF3162F26F9E3AC00A92E65 /* GetFavoritesQueueInteractor.swift */; };
 		F80034362069662500D7C0FB /* TransportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80034302069644300D7C0FB /* TransportRepository.swift */; };
 		F80034372069662900D7C0FB /* TransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */; };
@@ -225,6 +227,8 @@
 		DF16370026972A7000442CC4 /* GroupManagementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementRepository.swift; sourceTree = "<group>"; };
 		DF16370226972E3A00442CC4 /* AddMemberInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberInteractor.swift; sourceTree = "<group>"; };
 		DF16370426972E4D00442CC4 /* RemoveMemberInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMemberInteractor.swift; sourceTree = "<group>"; };
+		DF9E973126FF9905007C734B /* FavProviderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavProviderItem.swift; sourceTree = "<group>"; };
+		DF9E973326FF993A007C734B /* FavFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavFactory.swift; sourceTree = "<group>"; };
 		DFF3162F26F9E3AC00A92E65 /* GetFavoritesQueueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoritesQueueInteractor.swift; sourceTree = "<group>"; };
 		E0C41CFD1AB6123F24056B5A /* Pods-RxSonosLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLib/Pods-RxSonosLib.release.xcconfig"; sourceTree = "<group>"; };
 		F80034302069644300D7C0FB /* TransportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportRepository.swift; sourceTree = "<group>"; };
@@ -707,6 +711,7 @@
 				F8860E7D2074D89300BF6A7E /* MusicProviderTrack.swift */,
 				F8860E812074D8BE00BF6A7E /* TVTrack.swift */,
 				F8B947092097923E004F1A33 /* MusicProvider.swift */,
+				DF9E973126FF9905007C734B /* FavProviderItem.swift */,
 				F827E4E3212D55810019ADFD /* LibraryTrack.swift */,
 			);
 			path = Modal;
@@ -956,6 +961,7 @@
 			isa = PBXGroup;
 			children = (
 				F8860E842074F6BC00BF6A7E /* NowPlayingTrackFactory.swift */,
+				DF9E973326FF993A007C734B /* FavFactory.swift */,
 				F8860E9220750F6600BF6A7E /* QueueTrackFactory.swift */,
 			);
 			path = Factory;
@@ -1388,6 +1394,7 @@
 				F8B9470E209794C3004F1A33 /* GetMusicProvidersInteractor.swift in Sources */,
 				F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */,
 				F8181C5E21394BC400C8DE52 /* RenderingControlTarget.swift in Sources */,
+				DF9E973226FF9906007C734B /* FavProviderItem.swift in Sources */,
 				F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */,
 				F83D21022075403C001ABC9D /* RenderingControlRepository.swift in Sources */,
 				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
@@ -1443,6 +1450,7 @@
 				F8B0D8A52082562A0072BAE0 /* SetTransportStateInteractor.swift in Sources */,
 				F8181C6D21394D9000C8DE52 /* SystemPropertiesTarget.swift in Sources */,
 				F81A05F5206028D600897738 /* RoomRepositoryImpl.swift in Sources */,
+				DF9E973426FF993A007C734B /* FavFactory.swift in Sources */,
 				F8DE4765208A3297008F50FA /* GetMuteInteractor.swift in Sources */,
 				F81A05E9206028D600897738 /* Interactor.swift in Sources */,
 				F827E4E4212D55810019ADFD /* LibraryTrack.swift in Sources */,

@@ -69,7 +69,7 @@ open class SonosInteractor {
             .get(values: GetGroupQueueValues(group: group))
     }
     
-    static public func getFavorites(_ group: Group) -> Observable<[MusicProviderTrack]> {
+    static public func getFavorites(_ group: Group) -> Observable<[FavProviderItem]> {
         return GetFavoritesQueueInteractor(contentDirectoryRepository: RepositoryInjection.provideContentDirectoryRepository())
             .get(values: GetFavoritesQueueValues(group: group))
     }
