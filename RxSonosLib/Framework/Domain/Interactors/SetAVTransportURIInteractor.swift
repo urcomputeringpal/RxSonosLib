@@ -13,6 +13,7 @@ import RxSwift
 struct SetAVTransportURIValues: RequestValues {
     let group: Group
     let masterUrl: String
+    let metadata: String
 }
 
 class SetAVTransportURIInteractor: CompletableInteractor {
@@ -28,11 +29,13 @@ class SetAVTransportURIInteractor: CompletableInteractor {
     func buildInteractorObservable(values: SetAVTransportURIValues?) -> Completable {
         
         guard let group = values?.group,
-              let masterUrl = values?.masterUrl else {
+              let masterUrl = values?.masterUrl,
+              let metadata = values?.metadata
+              else {
             return Completable.error(SonosError.invalidImplementation)
         }
         
-        return transportRepository.setAVTransportURI(for: group, masterURI: masterUrl)
+        return transportRepository.setAVTransportURI(for: group, masterURI: masterUrl, metadata: metadata)
         
     }
 }

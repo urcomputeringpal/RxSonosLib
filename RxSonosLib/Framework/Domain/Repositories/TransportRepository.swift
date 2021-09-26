@@ -29,7 +29,7 @@ protocol TransportRepository {
     
     func setStop(group: Group) -> Completable
     
-    func setAVTransportURI(for group: Group, masterURI: String) -> Completable
+    func setAVTransportURI(for group: Group, masterURI: String, metadata: String) -> Completable
     
     func setBecomeCoordinatorOfStandaloneGroup(for group: Group, idx: Int) -> Completable
     
