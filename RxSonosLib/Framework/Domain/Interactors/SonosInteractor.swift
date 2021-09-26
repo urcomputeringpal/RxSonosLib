@@ -125,9 +125,9 @@ open class SonosInteractor {
             .get(values: SetMuteValues(room: room, enabled: enabled))
     }
     
-    static public func setAVTransportURI(masterUrl: String, for group: Group) -> Completable {
+    static public func setAVTransportURI(masterUrl: String, metadata: String, for group: Group) -> Completable {
         return SetAVTransportURIInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
-            .get(values: SetAVTransportURIValues(group: group, masterUrl: masterUrl))
+            .get(values: SetAVTransportURIValues(group: group, masterUrl: masterUrl, metadata: metadata))
     }
     
     static public func setBecomeCoordinatorOfStandaloneGroup(idx: Int, for group: Group) -> Completable {
