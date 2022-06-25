@@ -8,7 +8,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'RxSonosLib' do
-  platform :ios, '10.0'
+  platform :ios, '15.4'
   
   pod 'RxSwift', '~> 4.5'
   pod 'RxSSDP', '~> 5.0'
@@ -25,7 +25,7 @@ target 'RxSonosLib' do
 end
 
 target 'iOS Demo App' do
-  platform :ios, '10.0'
+  platform :ios, '15.4'
 
   pod 'RxSonosLib', :path => '.'
   pod 'RxSwift', '~> 4.5'
