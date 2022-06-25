@@ -94,6 +94,10 @@ open class SonosInteractor {
             .get(values: SetPreviousTrackValues(group: group))
     }
     
+    static public func setPlayUri(_ uri:String, _ group:Group) -> Completable {
+        return SetPlayUriInteractor(transportRepository: RepositoryInjection.provideTransportRepository()).get(values: SetPlayUriValues(group: group, uri: uri))
+    }
+       
     static public func getVolume(_ group: Group) -> Observable<Int> {
         return GetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: GetVolumeValues(group: group))

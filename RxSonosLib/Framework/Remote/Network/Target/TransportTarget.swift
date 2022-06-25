@@ -18,15 +18,15 @@ enum TransportTarget: SonosTargetType {
     case positionInfo
     case transportInfo
     case mediaInfo
-    //    case changeTrack(number: Int)
+    case changeTrack(number: Int)
     case seekTime(time: String)
-    //    case removeTrackFromQueue(number: Int)
-    //    case removeAllTracksFromQueue
-    //    case addTrackToQueueEnd(uri: String)
-    //    case addTrackToQueuePlayNext(uri: String)
-    //    case setQueue(uri: String)
-    //    case setAVTransportURI(uri: String)
-    //    case becomeCoordinatorOfStandaloneGroup
+    case removeTrackFromQueue(number: Int)
+    case removeAllTracksFromQueue
+    case addTrackToQueueEnd(uri: String)
+    case addTrackToQueuePlayNext(uri: String)
+    case setQueue(uri: String)
+    case setAVTransportURI(uri: String)
+    case becomeCoordinatorOfStandaloneGroup
     
     var action: String {
         switch self {
@@ -40,49 +40,47 @@ enum TransportTarget: SonosTargetType {
             return "Previous"
         case .next:
             return "Next"
-//        case .changeTrack:
-//            return "Seek"
-        case .seekTime:
+        case .changeTrack, .seekTime:
             return "Seek"
-//        case .addTrackToQueueEnd, .addTrackToQueuePlayNext:
-//            return "AddURIToQueue"
-//        case .removeTrackFromQueue:
-//            return "RemoveTrackFromQueue"
+        case .addTrackToQueueEnd, .addTrackToQueuePlayNext:
+            return "AddURIToQueue"
+        case .removeTrackFromQueue:
+            return "RemoveTrackFromQueue"
         case .positionInfo:
             return "GetPositionInfo"
         case .transportInfo:
             return "GetTransportInfo"
         case .mediaInfo:
             return "GetMediaInfo"
-//        case .removeAllTracksFromQueue:
-//            return "RemoveAllTracksFromQueue"
-//        case .setQueue:
-//            return "SetAVTransportURI"
-//        case .setAVTransportURI:
-//            return "SetAVTransportURI"
-//        case .becomeCoordinatorOfStandaloneGroup:
-//            return "BecomeCoordinatorOfStandaloneGroup"
+        case .removeAllTracksFromQueue:
+            return "RemoveAllTracksFromQueue"
+        case .setQueue:
+            return "SetAVTransportURI"
+        case .setAVTransportURI:
+            return "SetAVTransportURI"
+        case .becomeCoordinatorOfStandaloneGroup:
+            return "BecomeCoordinatorOfStandaloneGroup"
         }
     }
     
     var arguments: String? {
         switch self {
-        case .positionInfo, .transportInfo, .mediaInfo/*, .removeAllTracksFromQueue, .becomeCoordinatorOfStandaloneGroup*/:
+        case .positionInfo, .transportInfo, .mediaInfo, .removeAllTracksFromQueue, .becomeCoordinatorOfStandaloneGroup:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
         case .play, .pause, .stop, .previous, .next:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
-//        case .setQueue(let uri), .setAVTransportURI(let uri):
-//            return "<InstanceID>0</InstanceID><CurrentURI>\(uri)</CurrentURI><CurrentURIMetaData></CurrentURIMetaData>"
-//        case .addTrackToQueuePlayNext(let uri):
-//            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>"
-//        case .addTrackToQueueEnd(let uri):
-//            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>"
-//        case .removeTrackFromQueue(let number):
-//            return "<InstanceID>0</InstanceID><ObjectID>Q:0/\(number)</ObjectID>"
+        case .setQueue(let uri), .setAVTransportURI(let uri):
+            return "<InstanceID>0</InstanceID><CurrentURI>\(uri)</CurrentURI><CurrentURIMetaData></CurrentURIMetaData>"
+        case .addTrackToQueuePlayNext(let uri):
+            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>"
+        case .addTrackToQueueEnd(let uri):
+            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>"
+        case .removeTrackFromQueue(let number):
+            return "<InstanceID>0</InstanceID><ObjectID>Q:0/\(number)</ObjectID>"
         case .seekTime(let time):
             return "<InstanceID>0</InstanceID><Unit>REL_TIME</Unit><Target>\(time)</Target>"
-//        case .changeTrack(let number):
-//            return "<InstanceID>0</InstanceID><Unit>TRACK_NR</Unit><Target>\(number)</Target>"
+        case .changeTrack(let number):
+            return "<InstanceID>0</InstanceID><Unit>TRACK_NR</Unit><Target>\(number)</Target>"
         }
     }
     
@@ -90,9 +88,9 @@ enum TransportTarget: SonosTargetType {
         return "/MediaRenderer/AVTransport/Control"
     }
     
-//    var eventUrl: String {
-//        return "/MediaRenderer/AVTransport/Event"
-//    }
+    //    var eventUrl: String {
+    //        return "/MediaRenderer/AVTransport/Event"
+    //    }
     
     var schema: String {
         return "urn:schemas-upnp-org:service:AVTransport:1"

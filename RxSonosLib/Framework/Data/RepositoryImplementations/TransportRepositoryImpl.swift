@@ -64,6 +64,11 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
     
+    func setPlayUri(uri: String,group: Group) -> Completable {
+        return network.request(.setAVTransportURI(uri: uri), on: group.master)
+            .asCompletable()
+    }
+    
     func setPause(group: Group) -> Completable {
         return network.request(.pause, on: group.master)
             .asCompletable()

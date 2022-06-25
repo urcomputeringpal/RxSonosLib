@@ -156,6 +156,16 @@ extension ObservableType where E == Group {
             })
     }
     
+    public func setPlayUri(_ uri:String) -> Completable {
+           return
+               self
+               .take(1)
+               .asSingle()
+               .flatMapCompletable({ (group) -> Completable in
+                   return SonosInteractor.setPlayUri(uri, group)
+               })
+       }
+    
     public func getMute() -> Observable<[Bool]> {
         return
             self
