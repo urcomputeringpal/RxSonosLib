@@ -36,7 +36,6 @@ class NowPlayingViewController: UIViewController {
         setupTransportStateObservable()
         setupGroupProgressObservable()
         setupImageObservable()
-        SonosInteractor.getActiveGroup().setPreviousTrack()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
