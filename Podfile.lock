@@ -27,11 +27,11 @@ PODS:
 DEPENDENCIES:
   - AEXML (~> 4.4)
   - Mockingjay
-  - RxBlocking (~> 5.0)
-  - RxCocoa (~> 5.0)
+  - RxBlocking (~> 5)
+  - RxCocoa (~> 5)
   - RxSonosLib (from `.`)
   - RxSSDP (from `https://github.com/nicktrienensfuzz/RxSSDP`)
-  - RxSwift (~> 5.0)
+  - RxSwift (~> 5)
   - SwiftLint
 
 SPEC REPOS:
@@ -68,6 +68,6 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
-PODFILE CHECKSUM: ea797978474d499ddba843977193e8608bacb6c3
+PODFILE CHECKSUM: 4364bf42d7d37ea6b70a5b79c1e85ffe9aeac0a6
 
 COCOAPODS: 1.11.3
