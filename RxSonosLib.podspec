@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '4.0'
   spec.requires_arc           = true
   spec.source_files           = 'RxSonosLib/Framework/**/*.swift'
-  spec.dependency             'RxSwift', '~> 4.5'
+  spec.dependency             'RxSwift', '~> 5.0'
   spec.dependency             'RxSSDP', '~> 5.0'
   spec.dependency             'AEXML', '~> 4.4'
 end

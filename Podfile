@@ -10,8 +10,8 @@ inhibit_all_warnings!
 target 'RxSonosLib' do
   platform :ios, '15.4'
   
-  pod 'RxSwift', '~> 4.5'
-  pod 'RxSSDP', '~> 5.0'
+  pod 'RxSwift', '~> 5.0'
+  pod 'RxSSDP', :git => "https://github.com/nicktrienensfuzz/RxSSDP"
   pod 'AEXML', '~> 4.4'
   pod 'SwiftLint'
 
@@ -19,7 +19,7 @@ target 'RxSonosLib' do
     inherit! :search_paths
 
     pod 'Mockingjay'
-    pod 'RxBlocking', '~> 4.5'
+    pod 'RxBlocking', '~> 5.0'
   end
 
 end
@@ -28,8 +28,8 @@ target 'iOS Demo App' do
   platform :ios, '15.4'
 
   pod 'RxSonosLib', :path => '.'
-  pod 'RxSwift', '~> 4.5'
-  pod 'RxCocoa', '~> 4.5'
+  pod 'RxSwift', '~> 5.0'
+  pod 'RxCocoa', '~> 5.0'
 end
 
 # Disable Code Coverage for Pods projects

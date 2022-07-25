@@ -21,7 +21,7 @@ class RenderingControlRepositoryImpl: RenderingControlRepository {
     
     func getVolume(for group: Group) -> Single<Int> {
         let roomObservables = ([group.master] + group.slaves).map(mapRoomToVolume)
-        return Single.zip(roomObservables, zipRoomVolumes)
+        return Single.zip(roomObservables, resultSelector: zipRoomVolumes)
     }
     
     func set(volume: Int, for room: Room) -> Completable {
