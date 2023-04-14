@@ -5,11 +5,11 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'RxSonosLib' do
-  platform :ios, '10.0'
+  platform :ios, '13.0'
   
   pod 'RxSwift', '~> 4.5'
   pod 'RxSSDP', '~> 5.0'
-  pod 'AEXML', '~> 4.4'
+  pod 'AEXML', '~> 4.6.1'
   pod 'SwiftLint'
 
   target 'RxSonosLibTests' do
