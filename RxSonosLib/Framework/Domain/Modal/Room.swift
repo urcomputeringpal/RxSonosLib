@@ -11,8 +11,8 @@ import RxSwift
 
 open class Room: Codable {
     
-    private let ssdpDevice: SSDPDevice
-    private let deviceDescription: DeviceDescription
+    public let ssdpDevice: SSDPDevice
+    public let deviceDescription: DeviceDescription
     
     public var hasProxy: Bool { return ssdpDevice.hasProxy }
     public var name: String { return deviceDescription.name }
@@ -20,7 +20,7 @@ open class Room: Codable {
     public var uuid: String { return ssdpDevice.uuid! }
     public var userAgent: String { return ssdpDevice.server }
     
-    init(ssdpDevice: SSDPDevice, deviceDescription: DeviceDescription) {
+    public init(ssdpDevice: SSDPDevice, deviceDescription: DeviceDescription) {
         self.ssdpDevice = ssdpDevice
         self.deviceDescription = deviceDescription
     }

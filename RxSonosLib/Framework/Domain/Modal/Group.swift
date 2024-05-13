@@ -10,40 +10,42 @@ import Foundation
 import RxSwift
 
 open class Group {
-    
+
     /// The Master Room handles all requests that are fired to the Sonos Group
     public let master: Room
-    
+
     /// Only some requests are also processed by slave rooms, as example volume controll requests
     public let slaves: [Room]
-    
+
     /// Name of the group
     public lazy var name: String = {
         return (slaves.count > 0) ? "\(master.name) +\(slaves.count)" : master.name
     }()
-    
+
     /// All Room names in this group
     public lazy var names: [String] = {
         return Array(Set(rooms.map({ $0.name })))
     }()
-    
+
     /// All Rooms in this group
-    internal var rooms: [Room] {
+    var rooms: [Room] {
         return [master] + slaves
     }
-    
+
+    /// Active Track for this Group
+    let activeTrack: BehaviorSubject<Track?> = BehaviorSubject(value: nil)
     internal let disposebag = DisposeBag()
-    
+
     init(master: Room, slaves: [Room]) {
         self.master = master
         self.slaves = slaves
     }
-    
+
 }
 
 extension Group: Equatable {
     public static func == (lhs: Group, rhs: Group) -> Bool {
-        
+
         return lhs.master == rhs.master && lhs.slaves.sorted(by: sortRooms) == rhs.slaves.sorted(by: sortRooms)
     }
 }
@@ -61,7 +63,7 @@ extension ObservableType where E == Group {
             })
             .distinctUntilChanged()
     }
-    
+
     public func getTrack() -> Observable<Track?> {
         return
             self
@@ -69,7 +71,7 @@ extension ObservableType where E == Group {
                 return SonosInteractor.getTrack(group)
             })
     }
-    
+
     public func getImage() -> Observable<Data?> {
         return
             self
@@ -82,7 +84,7 @@ extension ObservableType where E == Group {
             })
             .distinctUntilChanged()
     }
-    
+
     public func getProgress() -> Observable<GroupProgress> {
         return
             self
@@ -91,7 +93,7 @@ extension ObservableType where E == Group {
             })
             .distinctUntilChanged()
     }
-    
+
     public func getQueue() -> Observable<[MusicProviderTrack]> {
         return
             self
@@ -99,7 +101,15 @@ extension ObservableType where E == Group {
                 return SonosInteractor.getQueue(group)
             })
     }
-    
+
+    public func getFavorites() -> Observable<[FavProviderItem]> {
+        return
+            self
+            .flatMap({ (group) -> Observable<[FavProviderItem]> in
+                return SonosInteractor.getFavorites(group)
+            })
+    }
+
     public func getTransportState() -> Observable<TransportState> {
         return
             self
@@ -107,7 +117,7 @@ extension ObservableType where E == Group {
                 return SonosInteractor.getTransportState(group)
             })
     }
-    
+
     public func set(transportState: TransportState) -> Completable {
         return
             self
@@ -117,7 +127,7 @@ extension ObservableType where E == Group {
                 return SonosInteractor.setTransport(state: transportState, for: group)
             })
     }
-    
+
     public func getVolume() -> Observable<Int> {
         return
             self
@@ -125,7 +135,7 @@ extension ObservableType where E == Group {
                 return SonosInteractor.getVolume(group)
             })
     }
-    
+
     public func set(volume: Int) -> Completable {
         return
             self
@@ -135,7 +145,7 @@ extension ObservableType where E == Group {
                 return SonosInteractor.set(volume: volume, for: group)
             })
     }
-    
+
     public func setNextTrack() -> Completable {
         return
             self
@@ -145,7 +155,7 @@ extension ObservableType where E == Group {
                 return SonosInteractor.setNextTrack(group)
             })
     }
-    
+
     public func setPreviousTrack() -> Completable {
         return
             self
@@ -155,7 +165,7 @@ extension ObservableType where E == Group {
                 return SonosInteractor.setPreviousTrack(group)
             })
     }
-    
+
     public func setPlayUri(_ uri:String) -> Completable {
            return
                self
@@ -165,7 +175,7 @@ extension ObservableType where E == Group {
                    return SonosInteractor.setPlayUri(uri, group)
                })
        }
-    
+
     public func getMute() -> Observable<[Bool]> {
         return
             self
@@ -173,12 +183,20 @@ extension ObservableType where E == Group {
             .getRooms()
             .getMute()
     }
-    
+
     public func set(mute enabled: Bool) -> Completable {
         return
             self
             .take(1)
             .getRooms()
             .set(mute: enabled)
+    }
+
+    public func setAVTransportURI(masterUrl: String, metadata: String, group: Group) -> Completable {
+        return SonosInteractor.setAVTransportURI(masterUrl: masterUrl, metadata: metadata, for: group)
+    }
+
+    public func setBecomeCoordinatorOfStandaloneGroup(idx: Int, group: Group) -> Completable {
+        return SonosInteractor.setBecomeCoordinatorOfStandaloneGroup(idx: idx, for: group)
     }
 }

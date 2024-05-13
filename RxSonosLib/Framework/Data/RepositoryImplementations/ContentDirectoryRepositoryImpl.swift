@@ -19,6 +19,12 @@ class ContentDirectoryRepositoryImpl: ContentDirectoryRepository {
             .map(mapDataToQueue(room: room))
     }
     
+    func getFavorites(for room: Room) -> Single<[FavProviderItem]> {
+        return network
+            .request(.favorites, on: room)
+            .map(mapDataToFavList(room: room))
+    }
+    
 }
 
 private extension ContentDirectoryRepositoryImpl {
@@ -33,8 +39,24 @@ private extension ContentDirectoryRepositoryImpl {
     
     func mapQueueItemToTrack(room: Room) -> ((Int, [String: String]) throws -> MusicProviderTrack?) {
         return { index, data in
+            print(data)
             return try QueueTrackFactory(room: room.ip, queueItem: index + 1, data: data).create()
         }
     }
     
+    func mapDataToFavList(room: Room) -> (([String: String]) throws -> [FavProviderItem]) {
+        return { data in
+            return try data["Result"]?
+                .mapMetaItems()?
+                .enumerated()
+                .compactMap(self.mapItemToFav(room: room)) ?? []
+        }
+    }
+    
+    func mapItemToFav(room: Room) -> ((Int, [String: String]) throws -> FavProviderItem?) {
+        return { index, data in
+            print(data)
+            return try FavFactory(room: room.ip, queueItem: index + 1, data: data).create()
+        }
+    }
 }

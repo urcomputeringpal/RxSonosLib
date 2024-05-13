@@ -9,15 +9,15 @@
 import Foundation
 import AEXML
 
-class DeviceDescription: Codable {
+open class DeviceDescription: Codable {
     
-    let name: String
-    let modalNumber: String
-    let modalName: String
-    let modalIcon: String
-    let serialNumber: String
-    let softwareVersion: String
-    let hardwareVersion: String
+    public let name: String
+    public let modalNumber: String
+    public let modalName: String
+    public let modalIcon: String
+    public let serialNumber: String
+    public let softwareVersion: String
+    public let hardwareVersion: String
     
     init (name: String, modalNumber: String, modalName: String, modalIcon: String, serialNumber: String, softwareVersion: String, hardwareVersion: String) {
         self.name = name

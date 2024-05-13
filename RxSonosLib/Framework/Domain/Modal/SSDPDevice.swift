@@ -10,21 +10,21 @@ import Foundation
 import RxSSDP
 
 open class SSDPDevice: Codable {
-    let ip: URL
-    let usn: String
-    let server: String
-    let ext: String
-    let st: String
-    let location: String
-    let cacheControl: String
+    public let ip: URL
+    public let usn: String
+    public let server: String
+    public let ext: String
+    public let st: String
+    public let location: String
+    public let cacheControl: String
     
     /* Sonos Specific SSDP Response */
-    let uuid: String?
-    let wifiMode: String?
-    let variant: String?
-    let household: String?
-    let bootseq: String?
-    let proxy: String?
+    public let uuid: String?
+    public let wifiMode: String?
+    public let variant: String?
+    public let household: String?
+    public let bootseq: String?
+    public let proxy: String?
     
     init(ip: URL, usn: String, server: String, ext: String, st: String, location: String, cacheControl: String, uuid: String?, wifiMode: String?, variant: String?, household: String?, bootseq: String?, proxy: String?) {
         self.ip = ip

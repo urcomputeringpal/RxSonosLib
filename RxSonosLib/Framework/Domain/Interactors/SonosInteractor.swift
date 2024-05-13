@@ -69,6 +69,11 @@ open class SonosInteractor {
             .get(values: GetGroupQueueValues(group: group))
     }
     
+    static public func getFavorites(_ group: Group) -> Observable<[FavProviderItem]> {
+        return GetFavoritesQueueInteractor(contentDirectoryRepository: RepositoryInjection.provideContentDirectoryRepository())
+            .get(values: GetFavoritesQueueValues(group: group))
+    }
+    
     static public func getTransportState(_ group: Group) -> Observable<TransportState> {
         return GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: GetTransportStateValues(group: group))
@@ -114,6 +119,16 @@ open class SonosInteractor {
 
     
     /* Room */
+    static public func addMember(memberId: String, for room: Room) -> Completable {
+        return AddMemberInteractor(groupManagementRepository: RepositoryInjection.provideGroupManagementRepository())
+            .get(values: AddMemberValues(room: room, memberId: memberId))
+    }
+    
+    static public func removeMember(memberId: String, for room: Room) -> Completable {
+        return RemoveMemberInteractor(groupManagementRepository: RepositoryInjection.provideGroupManagementRepository())
+            .get(values: RemoveMemberValues(room: room, memberId: memberId))
+    }
+    
     static public func getMute(for room: Room) -> Observable<Bool> {
         return GetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: GetMuteValues(room: room))
@@ -122,6 +137,16 @@ open class SonosInteractor {
     static public func set(mute enabled: Bool, for room: Room) -> Completable {
         return SetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetMuteValues(room: room, enabled: enabled))
+    }
+    
+    static public func setAVTransportURI(masterUrl: String, metadata: String, for group: Group) -> Completable {
+        return SetAVTransportURIInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: SetAVTransportURIValues(group: group, masterUrl: masterUrl, metadata: metadata))
+    }
+    
+    static public func setBecomeCoordinatorOfStandaloneGroup(idx: Int, for group: Group) -> Completable {
+        return SetBecomeCoordinatorOfStandaloneGroupInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: SetBecomeCoordinatorOfStandaloneGroupValues(group: group, idx: idx))
     }
     
     /* Track */
