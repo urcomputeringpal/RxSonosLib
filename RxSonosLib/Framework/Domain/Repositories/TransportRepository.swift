@@ -25,7 +25,13 @@ protocol TransportRepository {
 
     func setPlay(group: Group) -> Completable
 
-    func setPlayUri(uri: String,group: Group) -> Completable
+    func setPlayUri(uri: String, group: Group) -> Completable
+
+    func addTrackToQueuePlayNext(uri: String, group: Group) -> Completable
+
+    func addTrackToQueueEnd(uri: String, group: Group) -> Completable
+
+    func removeTrackFromQueue(track: Int, group: Group) -> Completable
 
     func setPause(group: Group) -> Completable
 

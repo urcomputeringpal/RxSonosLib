@@ -64,6 +64,22 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
 
+
+    func addTrackToQueuePlayNext(uri: String, group: Group) -> Completable {
+        return network.request(.addTrackToQueuePlayNext(uri: uri), on: group.master)
+            .asCompletable()
+    }
+
+    func addTrackToQueueEnd(uri: String, group: Group) -> Completable {
+        return network.request(.addTrackToQueueEnd(uri: uri), on: group.master)
+            .asCompletable()
+    }
+
+    func removeTrackFromQueue(track: Int, group: Group) -> Completable {
+        return network.request(.removeTrackFromQueue(number: track), on: group.master)
+            .asCompletable()
+    }
+
     func setPlayUri(uri: String, group: Group) -> Completable {
         // TODO optional metadata?
         return network.request(.setAVTransportURI(uri: uri, metadata: ""), on: group.master)
