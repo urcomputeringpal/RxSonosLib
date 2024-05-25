@@ -1,6 +1,4 @@
 
-source 'https://github.com/CocoaPods/Specs.git'
-
 # Comment this line if you're not using Swift and don't want to use dynamic frameworks
 use_frameworks!
 
@@ -25,7 +23,7 @@ target 'RxSonosLib' do
 end
 
 target 'iOS Demo App' do
-  platform :ios, '15.4'
+  platform :ios, '16.0'
 
   pod 'RxSonosLib', :path => '.'
   pod 'RxSwift', '~> 5'
