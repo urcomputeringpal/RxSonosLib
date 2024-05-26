@@ -39,6 +39,8 @@ protocol TransportRepository {
 
     func seekTrack(time: String, for room: Room) -> Completable
 
+    func changeTrack(number: Int, for room: Room) -> Completable
+
     func setAVTransportURI(for group: Group, masterURI: String, metadata: String) -> Completable
 
     func setBecomeCoordinatorOfStandaloneGroup(for group: Group, idx: Int) -> Completable

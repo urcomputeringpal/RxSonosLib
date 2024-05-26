@@ -104,6 +104,11 @@ open class SonosInteractor {
             .get(values: SeekTrackValues(group: group, time: time))
     }
 
+    static public func changeTrack(number: Int, for group: Group) -> Completable {
+        return ChangeTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: ChangeTrackValues(group: group, number: number))
+    }
+
     static public func setNextTrack(_ group: Group) -> Completable {
         return SetNextTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: SetNextTrackValues(group: group))

@@ -101,6 +101,12 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
 
+    func changeTrack(number: Int, for room: Room) -> Completable {
+        return network.request(.changeTrack(number: number), on: room)
+            .asCompletable()
+    }
+
+
     func setAVTransportURI(for group: Group, masterURI: String, metadata: String) -> Completable {
         return network.request(.setAVTransportURI(uri: masterURI, metadata: metadata), on: group.master)
             .asCompletable()
