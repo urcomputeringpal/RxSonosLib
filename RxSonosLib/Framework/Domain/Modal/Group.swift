@@ -138,23 +138,6 @@ extension ObservableType where E == Group {
             })
     }
 
-    public func playQueue() -> Completable {
-        return playQueue(number: 0)
-    }
-
-    public func playQueue(number: Int) -> Completable {
-        return
-            self
-            .take(1)
-            .asSingle()
-            .flatMapCompletable({ (group) -> Completable in
-                let uri = String(format: "x-rincon-queue:%s#0", group.master.uuid)
-                return setPlayUri(uri).andThen(Completable.deferred {
-                    self.changeTrack(number: number)
-                })
-            })
-    }
-
     public func getVolume() -> Observable<Int> {
         return
             self
