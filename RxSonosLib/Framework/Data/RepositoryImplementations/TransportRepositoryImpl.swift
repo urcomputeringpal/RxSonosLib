@@ -80,6 +80,11 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
 
+    func removeAllTracksFromQueue(group: Group) -> Completable {
+        return network.request(.removeAllTracksFromQueue, on: group.master)
+            .asCompletable()
+    }
+
     func setPlayUri(uri: String, group: Group) -> Completable {
         // TODO optional metadata?
         return network.request(.setAVTransportURI(uri: uri, metadata: ""), on: group.master)

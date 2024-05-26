@@ -77,8 +77,10 @@ enum TransportTarget: SonosTargetType {
             return "<InstanceID>0</InstanceID><Unit>REL_TIME</Unit><Target>\(time)</Target>"
         case .changeTrack(let number):
             return "<InstanceID>0</InstanceID><Unit>TRACK_NR</Unit><Target>\(number)</Target>"
-        case .positionInfo, .transportInfo, .mediaInfo, .setBecomeCoordinatorOfStandaloneGroup, .removeAllTracksFromQueue:
+        case .positionInfo, .transportInfo, .mediaInfo, .setBecomeCoordinatorOfStandaloneGroup:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
+        case .removeAllTracksFromQueue:
+            return "<InstanceID>0</InstanceID>"
         case .setQueue(let uri, let metadata), .setAVTransportURI(let uri, let metadata):
             return "<InstanceID>0</InstanceID><CurrentURI>\(uri)</CurrentURI><CurrentURIMetaData>\(metadata)</CurrentURIMetaData>"
         }

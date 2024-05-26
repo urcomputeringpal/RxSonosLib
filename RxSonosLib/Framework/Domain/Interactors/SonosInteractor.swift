@@ -84,6 +84,11 @@ open class SonosInteractor {
             .get(values: RemoveTrackFromQueueValues(group: group, track: track))
     }
 
+    static public func removeAllTracksFromQueue(_ group: Group) -> Completable {
+        return RemoveAllTracksFromQueueInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: RemoveAllTracksFromQueueValues(group: group))
+    }
+
     static public func getFavorites(_ group: Group) -> Observable<[FavProviderItem]> {
         return GetFavoritesQueueInteractor(contentDirectoryRepository: RepositoryInjection.provideContentDirectoryRepository())
             .get(values: GetFavoritesQueueValues(group: group))

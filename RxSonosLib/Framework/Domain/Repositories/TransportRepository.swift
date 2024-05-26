@@ -33,6 +33,8 @@ protocol TransportRepository {
 
     func removeTrackFromQueue(track: Int, group: Group) -> Completable
 
+    func removeAllTracksFromQueue(group: Group) -> Completable
+
     func setPause(group: Group) -> Completable
 
     func setStop(group: Group) -> Completable

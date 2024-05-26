@@ -233,6 +233,16 @@ extension ObservableType where E == Group {
             })
     }
 
+    public func removeAllTracksFromQueue() -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.removeAllTracksFromQueue(group)
+            })
+    }
+
     public func getMute() -> Observable<[Bool]> {
         return
             self

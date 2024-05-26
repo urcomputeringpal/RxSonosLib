@@ -126,3 +126,27 @@ class RemoveTrackFromQueueInteractor: CompletableInteractor {
             .removeTrackFromQueue(track: track, group: group)
     }
 }
+
+struct RemoveAllTracksFromQueueValues: RequestValues {
+    let group: Group
+}
+
+class RemoveAllTracksFromQueueInteractor: CompletableInteractor {
+
+    typealias T = RemoveAllTracksFromQueueValues
+
+    private let transportRepository: TransportRepository
+
+    init(transportRepository: TransportRepository) {
+        self.transportRepository = transportRepository
+    }
+
+    func buildInteractorObservable(values: RemoveAllTracksFromQueueValues?) -> Completable {
+        guard let group = values?.group else {
+            return Completable.error(SonosError.invalidImplementation)
+        }
+
+        return transportRepository
+            .removeAllTracksFromQueue(group: group)
+    }
+}
