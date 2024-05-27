@@ -69,14 +69,14 @@ open class SonosInteractor {
             .get(values: GetGroupQueueValues(group: group))
     }
 
-    static public func addTrackToQueuePlayNext(uri: String, group: Group) -> Completable {
+    static public func addTrackToQueuePlayNext(uri: String, metadata: String, group: Group) -> Completable {
         return AddTrackToQueuePlayNextInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
-            .get(values: AddTrackToQueueValues(group: group, uri: uri))
+            .get(values: AddTrackToQueueValues(group: group, uri: uri, metadata: metadata))
     }
 
-    static public func addTrackToQueueEnd(uri: String, group: Group) -> Completable {
+    static public func addTrackToQueueEnd(uri: String, metadata: String, group: Group) -> Completable {
         return AddTrackToQueueEndInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
-            .get(values: AddTrackToQueueValues(group: group, uri: uri))
+            .get(values: AddTrackToQueueValues(group: group, uri: uri, metadata: metadata))
     }
 
     static public func removeTrackFromQueue(track: Int, group: Group) -> Completable {

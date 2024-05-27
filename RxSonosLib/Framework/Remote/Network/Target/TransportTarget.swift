@@ -22,8 +22,8 @@ enum TransportTarget: SonosTargetType {
     case seekTime(time: String)
     case removeTrackFromQueue(number: Int)
     case removeAllTracksFromQueue
-    case addTrackToQueueEnd(uri: String)
-    case addTrackToQueuePlayNext(uri: String)
+    case addTrackToQueueEnd(uri: String, metadata: String)
+    case addTrackToQueuePlayNext(uri: String, metadata: String)
     case setQueue(uri: String, metadata: String)
     case setAVTransportURI(uri: String, metadata: String)
     case setBecomeCoordinatorOfStandaloneGroup
@@ -67,10 +67,10 @@ enum TransportTarget: SonosTargetType {
         switch self {
         case .play, .pause, .stop, .previous, .next:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
-        case .addTrackToQueuePlayNext(let uri):
-            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>"
-        case .addTrackToQueueEnd(let uri):
-            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>"
+        case .addTrackToQueuePlayNext(let uri, let metadata):
+            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData>\(metadata)</EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>"
+        case .addTrackToQueueEnd(let uri, let metadata):
+            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData>\(metadata)</EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>"
         case .removeTrackFromQueue(let number):
             return "<InstanceID>0</InstanceID><ObjectID>Q:0/\(number)</ObjectID>"
         case .seekTime(let time):

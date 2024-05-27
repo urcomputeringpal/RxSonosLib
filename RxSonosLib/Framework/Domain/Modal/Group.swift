@@ -186,23 +186,23 @@ extension ObservableType where E == Group {
                })
        }
 
-    public func addTrackToQueuePlayNext(_ uri:String) -> Completable {
+    public func addTrackToQueuePlayNext(uri:String, metadata:String) -> Completable {
         return
             self
             .take(1)
             .asSingle()
             .flatMapCompletable({ (group) -> Completable in
-                return SonosInteractor.addTrackToQueuePlayNext(uri: uri, group: group)
+                return SonosInteractor.addTrackToQueuePlayNext(uri: uri, metadata: metadata, group: group)
             })
     }
 
-    public func addTrackToQueueEnd(_ uri:String) -> Completable {
+    public func addTrackToQueueEnd(uri:String, metadata:String) -> Completable {
         return
             self
             .take(1)
             .asSingle()
             .flatMapCompletable({ (group) -> Completable in
-                return SonosInteractor.addTrackToQueueEnd(uri: uri, group: group)
+                return SonosInteractor.addTrackToQueueEnd(uri: uri, metadata: metadata, group: group)
             })
     }
 

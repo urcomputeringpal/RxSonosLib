@@ -60,6 +60,7 @@ class SetPlayUriInteractor: CompletableInteractor {
 struct AddTrackToQueueValues: RequestValues {
     let group: Group
     let uri:String
+    let metadata:String
 }
 
 class AddTrackToQueuePlayNextInteractor: CompletableInteractor {
@@ -73,12 +74,12 @@ class AddTrackToQueuePlayNextInteractor: CompletableInteractor {
     }
 
     func buildInteractorObservable(values: AddTrackToQueueValues?) -> Completable {
-        guard let group = values?.group, let uri = values?.uri else {
+        guard let group = values?.group, let uri = values?.uri, let metadata = values?.metadata else {
             return Completable.error(SonosError.invalidImplementation)
         }
 
         return transportRepository
-            .addTrackToQueuePlayNext(uri: uri, group: group)
+            .addTrackToQueuePlayNext(uri: uri, metadata: metadata, group: group)
     }
 }
 
@@ -93,12 +94,12 @@ class AddTrackToQueueEndInteractor: CompletableInteractor {
     }
 
     func buildInteractorObservable(values: AddTrackToQueueValues?) -> Completable {
-        guard let group = values?.group, let uri = values?.uri else {
+        guard let group = values?.group, let uri = values?.uri, let metadata = values?.metadata else {
             return Completable.error(SonosError.invalidImplementation)
         }
 
         return transportRepository
-            .addTrackToQueueEnd(uri: uri, group: group)
+            .addTrackToQueueEnd(uri: uri, metadata: metadata, group: group)
     }
 }
 

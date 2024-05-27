@@ -65,13 +65,13 @@ class TransportRepositoryImpl: TransportRepository {
     }
 
 
-    func addTrackToQueuePlayNext(uri: String, group: Group) -> Completable {
-        return network.request(.addTrackToQueuePlayNext(uri: uri), on: group.master)
+    func addTrackToQueuePlayNext(uri: String, metadata: String, group: Group) -> Completable {
+        return network.request(.addTrackToQueuePlayNext(uri: uri, metadata: metadata), on: group.master)
             .asCompletable()
     }
 
-    func addTrackToQueueEnd(uri: String, group: Group) -> Completable {
-        return network.request(.addTrackToQueueEnd(uri: uri), on: group.master)
+    func addTrackToQueueEnd(uri: String, metadata: String, group: Group) -> Completable {
+        return network.request(.addTrackToQueueEnd(uri: uri, metadata: metadata), on: group.master)
             .asCompletable()
     }
 
