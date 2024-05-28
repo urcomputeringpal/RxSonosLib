@@ -26,8 +26,8 @@ extension Network {
 }
 
 public struct HTTPError: Error {
-    let code: Int
-    let data: Data
+    public let code: Int
+    public let data: Data
 
     var localizedDescription: String {
         return "HTTPError \(code): \(data)"
@@ -45,7 +45,7 @@ extension Reactive where Base == URLSession {
                     event(.error(error))
                     return
                 }
-                
+
                 guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
                     event(.error(SonosError.invalidResponse))
                     return
