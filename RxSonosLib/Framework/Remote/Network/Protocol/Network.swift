@@ -25,7 +25,7 @@ extension Network {
     }
 }
 
-struct HTTPError: Error {
+public struct HTTPError: Error {
     let code: Int
     let data: Data
 
