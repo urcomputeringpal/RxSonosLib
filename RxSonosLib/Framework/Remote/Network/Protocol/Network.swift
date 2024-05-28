@@ -24,7 +24,19 @@ extension Network {
             })
     }
 }
-    
+
+struct HTTPError: Error {
+    let code: Int
+    let data: Data
+
+    var localizedDescription: String {
+        return "HTTPError \(code): \(data)"
+    }
+}
+func createHTTPError(int: Int, data: Data) -> HTTPError {
+    return HTTPError(code: int, data: data)
+}
+
 extension Reactive where Base == URLSession {
     func dataTask(with request: URLRequest) -> Single<Data> {
         return Single.create { (event) -> Disposable in
@@ -34,13 +46,18 @@ extension Reactive where Base == URLSession {
                     return
                 }
                 
-                guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode == 200 || statusCode == 204 else {
-                    event(.error(SonosError.unknownUrl))
+                guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+                    event(.error(SonosError.invalidResponse))
                     return
                 }
-                
+
                 guard let data = data, data.count > 0 else {
                     event(.error(SonosError.invalidData))
+                    return
+                }
+
+                guard statusCode == 200 || statusCode == 204 else {
+                    event(.error(createHTTPError(int: statusCode, data:data)))
                     return
                 }
                 event(.success(data))

@@ -11,7 +11,9 @@ import Foundation
 enum SonosError: Error {
     
     case noData
-    
+
+    case invalidResponse
+
     case invalidData
     
     case unknownUrl
