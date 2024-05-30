@@ -57,7 +57,7 @@ class SetPlayUriInteractor: CompletableInteractor {
             .setPlayUri(uri: uri, group: group)
     }
 }
-struct AddTrackToQueueValues: RequestValues {
+struct AddTrackToQueuePlayNextValues: RequestValues {
     let group: Group
     let uri:String
     let metadata:String
@@ -65,7 +65,7 @@ struct AddTrackToQueueValues: RequestValues {
 
 class AddTrackToQueuePlayNextInteractor: CompletableInteractor {
 
-    typealias T = AddTrackToQueueValues
+    typealias T = AddTrackToQueuePlayNextValues
 
     private let transportRepository: TransportRepository
 
@@ -73,7 +73,7 @@ class AddTrackToQueuePlayNextInteractor: CompletableInteractor {
         self.transportRepository = transportRepository
     }
 
-    func buildInteractorObservable(values: AddTrackToQueueValues?) -> Completable {
+    func buildInteractorObservable(values: AddTrackToQueuePlayNextValues?) -> Completable {
         guard let group = values?.group, let uri = values?.uri, let metadata = values?.metadata else {
             return Completable.error(SonosError.invalidImplementation)
         }
@@ -83,7 +83,14 @@ class AddTrackToQueuePlayNextInteractor: CompletableInteractor {
     }
 }
 
-class AddTrackToQueueEndInteractor: CompletableInteractor {
+struct AddTrackToQueueValues: RequestValues {
+    let group: Group
+    let uri:String
+    let metadata:String
+    let number:Int
+}
+
+class AddTrackToQueueInteractor: CompletableInteractor {
 
     typealias T = AddTrackToQueueValues
 
@@ -94,12 +101,12 @@ class AddTrackToQueueEndInteractor: CompletableInteractor {
     }
 
     func buildInteractorObservable(values: AddTrackToQueueValues?) -> Completable {
-        guard let group = values?.group, let uri = values?.uri, let metadata = values?.metadata else {
+        guard let group = values?.group, let uri = values?.uri, let metadata = values?.metadata, let number = values?.number else {
             return Completable.error(SonosError.invalidImplementation)
         }
 
         return transportRepository
-            .addTrackToQueueEnd(uri: uri, metadata: metadata, group: group)
+            .addTrackToQueue(uri: uri, metadata: metadata, number: number, group: group)
     }
 }
 

@@ -29,7 +29,7 @@ protocol TransportRepository {
 
     func addTrackToQueuePlayNext(uri: String, metadata: String, group: Group) -> Completable
 
-    func addTrackToQueueEnd(uri: String, metadata: String, group: Group) -> Completable
+    func addTrackToQueue(uri: String, metadata: String, number: Int, group: Group) -> Completable
 
     func removeTrackFromQueue(track: Int, group: Group) -> Completable
 

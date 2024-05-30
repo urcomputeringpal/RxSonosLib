@@ -70,8 +70,8 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
 
-    func addTrackToQueueEnd(uri: String, metadata: String, group: Group) -> Completable {
-        return network.request(.addTrackToQueueEnd(uri: uri, metadata: metadata), on: group.master)
+    func addTrackToQueue(uri: String, metadata: String, number: Int, group: Group) -> Completable {
+        return network.request(.addTrackToQueue(uri: uri, metadata: metadata, number: number), on: group.master)
             .asCompletable()
     }
 

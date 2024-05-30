@@ -71,12 +71,12 @@ open class SonosInteractor {
 
     static public func addTrackToQueuePlayNext(uri: String, metadata: String, group: Group) -> Completable {
         return AddTrackToQueuePlayNextInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
-            .get(values: AddTrackToQueueValues(group: group, uri: uri, metadata: metadata))
+            .get(values: AddTrackToQueuePlayNextValues(group: group, uri: uri, metadata: metadata))
     }
 
-    static public func addTrackToQueueEnd(uri: String, metadata: String, group: Group) -> Completable {
-        return AddTrackToQueueEndInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
-            .get(values: AddTrackToQueueValues(group: group, uri: uri, metadata: metadata))
+    static public func addTrackToQueue(uri: String, metadata: String, number: Int, group: Group) -> Completable {
+        return AddTrackToQueueInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: AddTrackToQueueValues(group: group, uri: uri, metadata: metadata, number: number))
     }
 
     static public func removeTrackFromQueue(track: Int, group: Group) -> Completable {

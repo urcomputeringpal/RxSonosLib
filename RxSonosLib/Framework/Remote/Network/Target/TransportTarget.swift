@@ -22,7 +22,7 @@ enum TransportTarget: SonosTargetType {
     case seekTime(time: String)
     case removeTrackFromQueue(number: Int)
     case removeAllTracksFromQueue
-    case addTrackToQueueEnd(uri: String, metadata: String)
+    case addTrackToQueue(uri: String, metadata: String, number: Int)
     case addTrackToQueuePlayNext(uri: String, metadata: String)
     case setQueue(uri: String, metadata: String)
     case setAVTransportURI(uri: String, metadata: String)
@@ -42,7 +42,7 @@ enum TransportTarget: SonosTargetType {
             return "Next"
         case .changeTrack, .seekTime:
             return "Seek"
-        case .addTrackToQueueEnd, .addTrackToQueuePlayNext:
+        case .addTrackToQueue, .addTrackToQueuePlayNext:
             return "AddURIToQueue"
         case .removeTrackFromQueue:
             return "RemoveTrackFromQueue"
@@ -69,8 +69,8 @@ enum TransportTarget: SonosTargetType {
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
         case .addTrackToQueuePlayNext(let uri, let metadata):
             return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData>\(metadata)</EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>"
-        case .addTrackToQueueEnd(let uri, let metadata):
-            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData>\(metadata)</EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>"
+        case .addTrackToQueue(let uri, let metadata, let number):
+            return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData>\(metadata)</EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>\(number)</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>"
         case .removeTrackFromQueue(let number):
             return "<InstanceID>0</InstanceID><ObjectID>Q:0/\(number)</ObjectID>"
         case .seekTime(let time):
