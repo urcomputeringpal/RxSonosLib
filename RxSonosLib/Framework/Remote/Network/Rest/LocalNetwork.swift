@@ -15,9 +15,13 @@ class LocalNetwork<Target: SonosTargetType>: Network {
     func request(_ action: Target, on room: Room) -> Single<[String: String]> {
         let url = room.ip.appendingPathComponent(action.controllUrl)
         var urlRequest = URLRequest(url: url, timeoutInterval: SonosSettings.shared.requestTimeout)
-        urlRequest.setValue("text/xml; charset=\"utf-8\"", forHTTPHeaderField: "Content-Type")
         urlRequest.httpMethod = "POST"
+        urlRequest.setValue("text/xml; charset=\"utf-8\"", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue("\"\(action.soapAction)\"", forHTTPHeaderField: "SOAPACTION")
+        urlRequest.setValue(nil, forHTTPHeaderField: "Accept-Language")
+        urlRequest.setValue(nil, forHTTPHeaderField: "Accept-Encoding")
+        urlRequest.setValue(nil, forHTTPHeaderField: "Accept")
+        urlRequest.setValue(nil, forHTTPHeaderField: "User-Agent")
         urlRequest.httpBody = action.requestBody.data(using: .utf8)
 
         return perform(request: urlRequest).map(openEnvelope(for: action))
