@@ -19,6 +19,7 @@ class LocalNetwork<Target: SonosTargetType>: Network {
         urlRequest.setValue("text/xml; charset=\"utf-8\"", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue("*", forHTTPHeaderField: "Accept-Encoding")
         urlRequest.setValue("*", forHTTPHeaderField: "Accept-Language")
+        urlRequest.setValue("close", forHTTPHeaderField: "Connection")
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("\"\(action.soapAction)\"", forHTTPHeaderField: "SOAPACTION")
         urlRequest.httpBody = action.requestBody.data(using: .utf8)
