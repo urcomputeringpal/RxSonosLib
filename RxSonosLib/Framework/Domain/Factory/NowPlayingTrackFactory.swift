@@ -52,7 +52,7 @@ class NowPlayingTrackFactory {
                 return nil
         }
         
-        return LibraryTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, progress: self.progress)
+        return LibraryTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, mediaInfo: self.mediaInfo, progress: self.progress)
     }
     
     private func createMusicProviderTrack(uri: String?, type: MusicService) -> MusicProviderTrack? {
@@ -67,7 +67,7 @@ class NowPlayingTrackFactory {
                 return nil
         }
         
-        return MusicProviderTrack(sid: sid, flags: type.flags, sn: type.sn, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, contentType: self.getContentType(), progress: self.progress)
+        return MusicProviderTrack(sid: sid, flags: type.flags, sn: type.sn, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, mediaInfo: self.mediaInfo, contentType: self.getContentType(), progress: self.progress)
     }
     
     private func createTVTrack() -> TVTrack? {
@@ -78,7 +78,7 @@ class NowPlayingTrackFactory {
                 return nil
         }
         
-        return TVTrack(queueItem: queueItem, uri: uri, contentType: self.getContentType())
+        return TVTrack(queueItem: queueItem, uri: uri, mediaInfo: self.mediaInfo, contentType: self.getContentType())
     }
     
     private func createTrack(uri: String?, usingTrackTitle: Bool) -> ANyTrack? {
@@ -93,7 +93,7 @@ class NowPlayingTrackFactory {
                 return nil
         }
         
-        return ANyTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, contentType: contentType, progress: self.progress)
+        return ANyTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, mediaInfo: self.mediaInfo, contentType: contentType, progress: self.progress)
     }
 
     private func getImageUrl(uri: String) -> URL? {

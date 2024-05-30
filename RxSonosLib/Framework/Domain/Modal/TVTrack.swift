@@ -34,11 +34,14 @@ open class TVTrack: Track {
      */
     public var description = [TrackDescription: String]()
     
-    internal init(queueItem: Int, uri: String, contentType: TrackContentType?) {
+    public let mediaInfo: [String: String]
+
+    internal init(queueItem: Int, uri: String, mediaInfo: [String: String], contentType: TrackContentType?) {
         self.queueItem = queueItem
         self.uri = uri
         self.contentType = contentType ?? .lineInHomeTheater
         self.progress = nil
+        self.mediaInfo = mediaInfo
     }
     
 }

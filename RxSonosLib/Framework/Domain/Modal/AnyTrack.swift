@@ -20,10 +20,12 @@ open class ANyTrack: Track, TrackImage {
     public var contentType: TrackContentType
     
     public var progress: GroupProgress?
-    
+
+    public let mediaInfo: [String: String]
+
     var imageUri: URL
     
-    init(queueItem: Int, duration: UInt, uri: String, imageUri: URL, description: [TrackDescription: String], contentType: TrackContentType?, progress: GroupProgress? = nil) {
+    init(queueItem: Int, duration: UInt, uri: String, imageUri: URL, description: [TrackDescription: String], mediaInfo: [String: String], contentType: TrackContentType?, progress: GroupProgress? = nil) {
         self.queueItem = queueItem
         self.queueItem = queueItem
         self.duration = duration
@@ -32,6 +34,7 @@ open class ANyTrack: Track, TrackImage {
         self.description = description
         self.contentType = contentType ?? .musicTrack
         self.progress = progress
+        self.mediaInfo = mediaInfo
     }
     
 }

@@ -119,7 +119,9 @@ public protocol Track {
     var contentType: TrackContentType { get }
     
     var progress: GroupProgress? { get }
-    
+
+    var mediaInfo: [String: String] { get }
+
 }
 
 extension Track {
