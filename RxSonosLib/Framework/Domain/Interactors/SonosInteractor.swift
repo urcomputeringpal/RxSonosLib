@@ -30,6 +30,13 @@ open class SonosInteractor {
         }
     }
 
+    static public func setActive(roomName: String) throws {
+        let all = try shared.allGroups.value()
+        if let group = all.first(where: { $0.master.name == roomName }) {
+            shared.setActive(group: group)
+        }
+    }
+
     static public func getActiveGroup() -> Observable<Group> {
         return shared
             .activeGroup
@@ -39,6 +46,10 @@ open class SonosInteractor {
 
     static public func getAllGroups() -> Observable<[Group]> {
         return shared.allGroups.asObserver()
+    }
+
+    static public func getAllRooms() -> Observable<[Room]> {
+        return shared.allRooms.asObserver()
     }
 
     static public func getAllMusicProviders() -> Single<[MusicProvider]> {
