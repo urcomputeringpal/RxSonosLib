@@ -26,7 +26,7 @@ enum CacheKey: String, CaseIterable {
 
 open class CacheManager {
 
-    static let shared = CacheManager()
+    public static let shared = CacheManager()
 
     private var documentPath: URL? {
         return URL(fileURLWithPath: NSTemporaryDirectory())
@@ -62,7 +62,7 @@ open class CacheManager {
         return object
     }
 
-    func clear(removeLongCache: Bool = false) {
+    public func clear(removeLongCache: Bool = false) {
         let exclude = removeLongCache ? [] : CacheKey.allCases.filter({ $0.isLongCache }).map({ $0.rawValue })
         guard let documentPath = documentPath,
             let result = try? FileManager.default.contentsOfDirectory(at: documentPath, includingPropertiesForKeys: nil).filter({ !$0.lastPathComponent.has(prefix: exclude) }) else { return }
