@@ -19,7 +19,8 @@ open class SonosInteractor {
 
     init() {
         observerRooms()
-        observerGroups()
+        // disable internal activeGroup management
+        // observerGroups()
         startRenewingRooms()
     }
 
