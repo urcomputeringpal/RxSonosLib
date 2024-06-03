@@ -249,4 +249,64 @@ extension ObservableType where E == Group {
     public func setBecomeCoordinatorOfStandaloneGroup(idx: Int, group: Group) -> Completable {
         return SonosInteractor.setBecomeCoordinatorOfStandaloneGroup(idx: idx, for: group)
     }
+
+    public func getGroupVolume() -> Observable<Int> {
+        return
+            self
+            .take(1)
+            .flatMap({ (group) -> Observable<Int> in
+                return SonosInteractor.getGroupVolume(for: group.master)
+            })
+            .asObservable()
+    }
+
+    public func setGroupVolume(volume: Int) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.setGroupVolume(volume: volume, for: group.master)
+            })
+    }
+
+    public func setRelativeGroupVolume(volume: Int) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.setRelativeGroupVolume(volume: volume, for: group.master)
+            })
+    }
+
+    public func setGroupMute(enabled: Bool) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.setGroupMute(enabled: enabled, for: group.master)
+            })
+    }
+
+    public func getGroupMute() -> Observable<Bool> {
+        return
+            self
+            .take(1)
+            .flatMap({ (group) -> Observable<Bool> in
+                return SonosInteractor.getGroupMute(for: group.master)
+            })
+            .asObservable()
+    }
+
+    public func snapshotGroupVolume() -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.snapshotGroupVolume(for: group.master)
+            })
+    }
 }

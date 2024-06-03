@@ -186,6 +186,36 @@ open class SonosInteractor {
             .get(values: SetBecomeCoordinatorOfStandaloneGroupValues(group: group, idx: idx))
     }
 
+    static public func getGroupVolume(for room: Room) -> Observable<Int> {
+        return GetGroupVolumeInteractor(groupRenderingControlRepository: RepositoryInjection.provideGroupRenderingControlRepository())
+            .get(values: GetGroupVolumeValues(room: room))
+    }
+
+    static public func setGroupVolume(volume: Int, for room: Room) -> Completable {
+        return SetGroupVolumeInteractor(groupRenderingControlRepository: RepositoryInjection.provideGroupRenderingControlRepository())
+            .get(values: SetGroupVolumeValues(volume: volume, room: room))
+    }
+
+    static public func setRelativeGroupVolume(volume: Int, for room: Room) -> Completable {
+        return SetRelativeGroupVolumeInteractor(groupRenderingControlRepository: RepositoryInjection.provideGroupRenderingControlRepository())
+            .get(values: SetRelativeGroupVolumeValues(volume: volume, room: room))
+    }
+
+    static public func snapshotGroupVolume(for room: Room) -> Completable {
+        return SnapshotGroupVolumeInteractor(groupRenderingControlRepository: RepositoryInjection.provideGroupRenderingControlRepository())
+            .get(values: SnapshotGroupVolumeValues(room: room))
+    }
+
+    static public func getGroupMute(for room: Room) -> Observable<Bool> {
+        return GetGroupMuteInteractor(groupRenderingControlRepository: RepositoryInjection.provideGroupRenderingControlRepository())
+            .get(values: GetGroupMuteValues(room: room))
+    }
+
+    static public func setGroupMute(enabled: Bool, for room: Room) -> Completable {
+        return SetGroupMuteInteractor(groupRenderingControlRepository: RepositoryInjection.provideGroupRenderingControlRepository())
+            .get(values: SetGroupMuteValues(enabled: enabled, room: room))
+    }
+
     /* Track */
     static public func getTrackImage(_ track: Track) -> Observable<Data?> {
         return GetTrackImageInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
