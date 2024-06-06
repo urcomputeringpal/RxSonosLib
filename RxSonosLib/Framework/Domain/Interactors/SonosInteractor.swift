@@ -181,9 +181,19 @@ open class SonosInteractor {
             .get(values: SetAVTransportURIValues(group: group, masterUrl: masterUrl, metadata: metadata))
     }
 
+    static public func setAVTransportURI(masterUrl: String, metadata: String, for room: Room) -> Completable {
+        return SetRoomAVTransportURIInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: SetRoomAVTransportURIValues(room: room, uri: masterUrl, metadata: metadata))
+    }
+
     static public func setBecomeCoordinatorOfStandaloneGroup(idx: Int, for group: Group) -> Completable {
         return SetBecomeCoordinatorOfStandaloneGroupInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: SetBecomeCoordinatorOfStandaloneGroupValues(group: group, idx: idx))
+    }
+
+    static public func setBecomeCoordinatorOfStandaloneGroupRoomGroup(for room: Room) -> Completable {
+        return SetBecomeCoordinatorOfStandaloneGroupRoomInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: SetBecomeCoordinatorOfStandaloneGroupRoomValues(room: room))
     }
 
     static public func getGroupVolume(for room: Room) -> Observable<Int> {

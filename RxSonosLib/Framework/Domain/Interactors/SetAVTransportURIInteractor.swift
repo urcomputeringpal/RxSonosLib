@@ -19,23 +19,53 @@ struct SetAVTransportURIValues: RequestValues {
 class SetAVTransportURIInteractor: CompletableInteractor {
 
     typealias T = SetAVTransportURIValues
-    
+
     private let transportRepository: TransportRepository
-    
+
     init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
     }
-    
+
     func buildInteractorObservable(values: SetAVTransportURIValues?) -> Completable {
-        
+
         guard let group = values?.group,
               let masterUrl = values?.masterUrl,
               let metadata = values?.metadata
               else {
             return Completable.error(SonosError.invalidImplementation)
         }
-        
+
         return transportRepository.setAVTransportURI(for: group, masterURI: masterUrl, metadata: metadata)
-        
+
+    }
+}
+
+struct SetRoomAVTransportURIValues: RequestValues {
+    let room: Room
+    let uri: String
+    let metadata: String
+}
+
+class SetRoomAVTransportURIInteractor: CompletableInteractor {
+
+    typealias T = SetRoomAVTransportURIValues
+
+    private let transportRepository: TransportRepository
+
+    init(transportRepository: TransportRepository) {
+        self.transportRepository = transportRepository
+    }
+
+    func buildInteractorObservable(values: SetRoomAVTransportURIValues?) -> Completable {
+
+        guard let room = values?.room,
+              let uri = values?.uri,
+              let metadata = values?.metadata
+              else {
+            return Completable.error(SonosError.invalidImplementation)
+        }
+
+        return transportRepository.setAVTransportURI(room: room, masterURI: uri, metadata: metadata)
+
     }
 }

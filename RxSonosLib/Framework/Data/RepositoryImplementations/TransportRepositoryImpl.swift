@@ -117,11 +117,27 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
 
+    func setAVTransportURI(room: Room, masterURI: String, metadata: String) -> Completable {
+        return network.request(.setAVTransportURI(uri: masterURI, metadata: metadata), on: room)
+            .asCompletable()
+    }
+
+    func setBecomeCoordinatorOfStandaloneGroup(for room: Room) -> Completable {
+        return network.request(.setBecomeCoordinatorOfStandaloneGroup, on: room)
+            .asCompletable()
+    }
+
     func setBecomeCoordinatorOfStandaloneGroup(for group: Group, idx: Int) -> Completable {
         let slave = group.slaves[idx]
         return network.request(.setBecomeCoordinatorOfStandaloneGroup, on: slave)
             .asCompletable()
     }
+
+    func setBecomeCoordinatorOfStandaloneRoomGroup(room: Room) -> Completable {
+        return network.request(.setBecomeCoordinatorOfStandaloneGroup, on: room)
+            .asCompletable()
+    }
+
 }
 
 private extension TransportRepositoryImpl {

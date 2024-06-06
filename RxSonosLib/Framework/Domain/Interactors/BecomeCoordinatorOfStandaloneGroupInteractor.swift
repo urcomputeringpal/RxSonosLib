@@ -36,3 +36,28 @@ class SetBecomeCoordinatorOfStandaloneGroupInteractor: CompletableInteractor {
         
     }
 }
+
+struct SetBecomeCoordinatorOfStandaloneGroupRoomValues: RequestValues {
+    let room: Room
+}
+
+class SetBecomeCoordinatorOfStandaloneGroupRoomInteractor: CompletableInteractor {
+    typealias T = SetBecomeCoordinatorOfStandaloneGroupRoomValues
+
+    private let transportRepository: TransportRepository
+
+    init(transportRepository: TransportRepository) {
+        self.transportRepository = transportRepository
+    }
+
+    func buildInteractorObservable(values: SetBecomeCoordinatorOfStandaloneGroupRoomValues?) -> Completable {
+
+        if let room = values?.room {
+            return transportRepository.setBecomeCoordinatorOfStandaloneRoomGroup(room: room)
+        } else {
+            return Completable.error(SonosError.invalidImplementation)
+        }
+
+
+    }
+}
