@@ -93,6 +93,6 @@ extension ObservableType where E == Room {
 
 extension Room: Equatable {
     public static func == (lhs: Room, rhs: Room) -> Bool {
-        return lhs.ssdpDevice.usn == lhs.ssdpDevice.usn && lhs.ssdpDevice.ip == rhs.ssdpDevice.ip && lhs.deviceDescription == rhs.deviceDescription
+        return lhs.ssdpDevice.usn == lhs.ssdpDevice.usn && lhs.ssdpDevice.ip == rhs.ssdpDevice.ip
     }
 }
