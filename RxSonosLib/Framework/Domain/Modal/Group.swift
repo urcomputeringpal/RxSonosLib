@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-open class Group {
+open class Group: Codable {
 
     /// The Master Room handles all requests that are fired to the Sonos Group
     public let master: Room
@@ -32,11 +32,8 @@ open class Group {
         return [master] + slaves
     }
 
-    /// Active Track for this Group
-    let activeTrack: BehaviorSubject<Track?> = BehaviorSubject(value: nil)
-    internal let disposebag = DisposeBag()
 
-    init(master: Room, slaves: [Room]) {
+    public init(master: Room, slaves: [Room]) {
         self.master = master
         self.slaves = slaves
     }
@@ -49,6 +46,13 @@ extension Group: Equatable {
         return lhs.master == rhs.master && lhs.slaves.sorted(by: sortRooms) == rhs.slaves.sorted(by: sortRooms)
     }
 }
+
+extension Group : Identifiable {
+    public var id: String {
+        return self.master.uuid
+    }
+}
+
 
 private func sortRooms(room1: Room, room2: Room) -> Bool {
     return room1.uuid > room2.uuid

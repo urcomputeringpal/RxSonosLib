@@ -10,21 +10,21 @@ import Foundation
 import RxSwift
 
 open class Room: Codable {
-    
+
     public let ssdpDevice: SSDPDevice
     public let deviceDescription: DeviceDescription
-    
+
     public var hasProxy: Bool { return ssdpDevice.hasProxy }
     public var name: String { return deviceDescription.name }
     public var ip: URL { return ssdpDevice.ip }
     public var uuid: String { return ssdpDevice.uuid! }
     public var userAgent: String { return ssdpDevice.server }
-    
+
     public init(ssdpDevice: SSDPDevice, deviceDescription: DeviceDescription) {
         self.ssdpDevice = ssdpDevice
         self.deviceDescription = deviceDescription
     }
-    
+
 }
 
 extension ObservableType where E == [Room] {
@@ -35,7 +35,7 @@ extension ObservableType where E == [Room] {
                 return Observable.just(room).getMute()
             })
     }
-    
+
     public func set(mute enabled: Bool) -> Completable {
         return
             self
@@ -44,7 +44,7 @@ extension ObservableType where E == [Room] {
                     return SonosInteractor.set(mute: enabled, for: room)
                 })
     }
-    
+
     internal func foreachRoom<T>(perform: @escaping ((Room) -> (Observable<T>))) -> Observable<[T]> {
         return
             self
@@ -55,7 +55,7 @@ extension ObservableType where E == [Room] {
                 return Observable.zip(collection)
             })
     }
-    
+
     internal func foreachRoom(perform: @escaping ((Room) -> (Completable))) -> Completable {
         return
             self
@@ -68,7 +68,7 @@ extension ObservableType where E == [Room] {
                     return Completable.merge(events)
                 })
     }
-    
+
 }
 
 extension ObservableType where E == Room {
@@ -79,7 +79,7 @@ extension ObservableType where E == Room {
                 return SonosInteractor.getMute(for: room)
             })
     }
-    
+
     public func set(mute enabled: Bool) -> Completable {
         return
             self
@@ -93,6 +93,6 @@ extension ObservableType where E == Room {
 
 extension Room: Equatable {
     public static func == (lhs: Room, rhs: Room) -> Bool {
-        return lhs.uuid == rhs.uuid
+        return lhs.ssdpDevice.usn == lhs.ssdpDevice.usn && lhs.ssdpDevice.ip == rhs.ssdpDevice.ip && lhs.deviceDescription == rhs.deviceDescription
     }
 }
