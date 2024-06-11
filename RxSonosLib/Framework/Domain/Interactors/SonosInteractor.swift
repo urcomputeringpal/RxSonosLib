@@ -156,6 +156,11 @@ open class SonosInteractor {
 
 
     /* Room */
+    static public func getGroups(for room: Room) -> Single<[Group]> {
+        return GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
+            .get(values: GetGroupsValues(rooms: [room]))
+    }
+
     static public func addMember(memberId: String, for room: Room) -> Completable {
         return AddMemberInteractor(groupManagementRepository: RepositoryInjection.provideGroupManagementRepository())
             .get(values: AddMemberValues(room: room, memberId: memberId))
@@ -324,6 +329,22 @@ extension SonosInteractor {
                     .asObservable()
             })
             .subscribe(allGroups)
+    }
+
+    public func renewGroups(with room: Room, period: RxTimeInterval = SonosSettings.shared.renewGroupsTimer) -> Disposable {
+        renewingGroupDisposable?.dispose()
+
+        let newDisposable = createTimer(period)
+            .flatMap({ _ -> Observable<[Group]> in
+                return GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
+                    .get(values: GetGroupsValues(rooms: [room]))
+                    .catchError({ _ in Single<[Group]>.just([]) })
+                    .asObservable()
+            })
+            .subscribe(allGroups)
+        renewingGroupDisposable = newDisposable
+
+        return newDisposable
     }
 
     private func setActive(group: Group?) {
