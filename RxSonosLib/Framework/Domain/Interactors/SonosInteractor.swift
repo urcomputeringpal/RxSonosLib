@@ -65,6 +65,11 @@ open class SonosInteractor {
         }
     }
 
+    static public func renewGroups(with room: Room, period: RxTimeInterval = SonosSettings.shared.renewGroupsTimer) -> Disposable {
+        return shared.renewGroups(with: room, period: period)
+    }
+
+
     /* Group */
     static public func getTrack(_ group: Group) -> Observable<Track?> {
         return GetNowPlayingInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
