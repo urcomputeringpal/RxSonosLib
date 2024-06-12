@@ -49,7 +49,7 @@ extension Group: Equatable {
 
 extension Group : Identifiable {
     public var id: String {
-        return self.master.uuid
+        return self.master.deviceDescription.serialNumber
     }
 }
 

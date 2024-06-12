@@ -93,7 +93,7 @@ extension ObservableType where E == Room {
 
 extension Room: Identifiable {
     public var id: String {
-        return self.ssdpDevice.usn
+        return self.deviceDescription.serialNumber
     }
 }
 
