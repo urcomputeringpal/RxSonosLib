@@ -11,6 +11,10 @@ import RxSwift
 @testable import RxSonosLib
 
 class FakeRenderingControlRepositoryImpl: RenderingControlRepository {
+    func change(volume: Int, for group: RxSonosLib.Group) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
     
     func getVolume(for room: Room) -> Single<Int> {
         return Single.just(30)

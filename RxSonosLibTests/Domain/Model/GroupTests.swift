@@ -32,34 +32,13 @@ class GroupTests: XCTestCase {
     
     func testItCanCompareDifferentGroupsOnMaster() throws {
         let group1 = firstGroup()
-        let group2 = try Group(master: secondRoom(), slaves: [])
-        
+        let group2 = try Group(id: "10", master: secondRoom(), slaves: [])
+
         XCTAssertNotEqual(group1, group2)
     }
-    
-    func testItCanCompareGroupsWithDifferentOrderSlaves() throws {
-        let group1 = try Group(master: firstRoom(), slaves: [secondRoom(), thirdRoom()])
-        let group2 = try Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
-        
-        XCTAssertEqual(group1, group2)
-    }
-    
-    func testItCanCompareDifferentGroupsOnSlaves() throws {
-        let group1 = try Group(master: firstRoom(), slaves: [secondRoom()])
-        let group2 = try Group(master: firstRoom(), slaves: [thirdRoom()])
-        
-        XCTAssertNotEqual(group1, group2)
-    }
-    
-    func testItCanCompareDifferentGroupsOnMultipleSlaves() throws {
-        let group1 = try Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
-        let group2 = try Group(master: firstRoom(), slaves: [thirdRoom()])
-        
-        XCTAssertNotEqual(group1, group2)
-    }
-    
+
     func testItCanGetTheGroupName() throws {
-        let group = try Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
+        let group = try Group(id: "10", master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
         XCTAssertEqual(group.name, "Living +2")
     }
     

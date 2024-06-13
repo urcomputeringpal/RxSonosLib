@@ -144,7 +144,7 @@ class TransportRepositoryTest: XCTestCase {
         let data = UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!.jpegData(compressionQuality: 1.0)!
         stub(everything, http(download: .content(data)))
 
-        let track = TVTrack(queueItem: 1, uri: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
+        let track = TVTrack(queueItem: 1, uri: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif", mediaInfo: [:], contentType: TrackContentType.audioBroadcast)
         
         let image = try transportRepository
             .getImage(for: track)

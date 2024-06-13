@@ -9,7 +9,9 @@
 import Foundation
 import RxSwift
 
-open class Group: Codable {
+open class Group: Codable & Identifiable {
+
+    public let id: String
 
     /// The Master Room handles all requests that are fired to the Sonos Group
     public let master: Room
@@ -33,7 +35,8 @@ open class Group: Codable {
     }
 
 
-    public init(master: Room, slaves: [Room]) {
+    public init(id: String, master: Room, slaves: [Room]) {
+        self.id = id
         self.master = master
         self.slaves = slaves
     }
@@ -43,16 +46,9 @@ open class Group: Codable {
 extension Group: Equatable {
     public static func == (lhs: Group, rhs: Group) -> Bool {
 
-        return lhs.master == rhs.master && lhs.slaves.sorted(by: sortRooms) == rhs.slaves.sorted(by: sortRooms)
+        return lhs.id == rhs.id
     }
 }
-
-extension Group : Identifiable {
-    public var id: String {
-        return self.master.deviceDescription.serialNumber
-    }
-}
-
 
 private func sortRooms(room1: Room, room2: Room) -> Bool {
     return room1.uuid > room2.uuid

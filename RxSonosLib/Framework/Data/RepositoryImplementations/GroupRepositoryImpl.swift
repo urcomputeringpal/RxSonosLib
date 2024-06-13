@@ -36,6 +36,7 @@ private extension GroupRepositoryImpl {
     func mapZoneToGroup(rooms: [Room]) -> ((AEXMLElement) -> Group?) {
         return { zone in
             guard let coordinatorUuid = zone.attributes["Coordinator"],
+                let id = zone.attributes["ID"],
                 let coordinator = rooms.filter({ $0.uuid == coordinatorUuid }).first else {
                     return nil
             }
@@ -45,7 +46,7 @@ private extension GroupRepositoryImpl {
                 .map(self.mapMembersToSlaves(coordinatorUuid: coordinatorUuid))
                 .reduce([], +)
                 .compactMap(self.mapUuidToRoom(rooms: rooms)) ?? []
-            return Group(master: coordinator, slaves: slaves)
+            return Group(id: id, master: coordinator, slaves: slaves)
         }
     }
 

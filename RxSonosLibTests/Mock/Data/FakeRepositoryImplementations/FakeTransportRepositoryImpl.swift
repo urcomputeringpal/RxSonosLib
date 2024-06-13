@@ -11,12 +11,56 @@ import Foundation
 import RxSwift
 
 class FakeTransportRepositoryImpl: TransportRepository {
+    func setPlayUri(uri: String, group: RxSonosLib.Group) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func addTrackToQueuePlayNext(uri: String, metadata: String, group: RxSonosLib.Group) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func addTrackToQueue(uri: String, metadata: String, number: Int, group: RxSonosLib.Group) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func removeTrackFromQueue(track: Int, group: RxSonosLib.Group) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func removeAllTracksFromQueue(group: RxSonosLib.Group) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func seekTrack(time: String, for room: RxSonosLib.Room) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func changeTrack(number: Int, for room: RxSonosLib.Room) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func setAVTransportURI(for group: RxSonosLib.Group, masterURI: String, metadata: String) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func setAVTransportURI(room: RxSonosLib.Room, masterURI: String, metadata: String) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func setBecomeCoordinatorOfStandaloneGroup(for group: RxSonosLib.Group, idx: Int) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
+    func setBecomeCoordinatorOfStandaloneRoomGroup(room: RxSonosLib.Room) -> RxSwift.Completable {
+        return Completable.empty()
+    }
+    
     func setAVTransportURI(for room: Room, masterURI: String) -> Completable {
         return Completable.empty()
     }
     
     func getNowPlaying(for room: Room) -> Single<Track?> {
-        return Single.just(MusicProviderTrack(sid: 9, flags: nil, sn: nil, queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, description: [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"]))
+        return Single.just(MusicProviderTrack(sid: 9, flags: nil, sn: nil, queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, description: [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"], mediaInfo: [:], contentType: TrackContentType.lineInHomeTheater))
     }
     
     func getNowPlayingProgress(for room: Room) -> Single<GroupProgress> {

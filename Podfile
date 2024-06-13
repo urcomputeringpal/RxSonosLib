@@ -16,7 +16,7 @@ target 'RxSonosLib' do
   target 'RxSonosLibTests' do
     inherit! :search_paths
 
-    pod 'Mockingjay'
+    pod 'Mockingjay', :git => 'https://github.com/kylef/Mockingjay', :commit => 'b88c9dce2b7561cccbf35e2882b3c71a2efa387a'
     pod 'RxBlocking', '~> 5'
   end
 

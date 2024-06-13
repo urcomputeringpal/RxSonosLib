@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E91F92E1A58EE1BDA9D2FA3 /* Pods_RxSonosLibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E2E069A6996FE20C1D0423 /* Pods_RxSonosLibTests.framework */; };
+		58495E9A2C1B6AD50096BCF8 /* Pods_RxSonosLibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E2E069A6996FE20C1D0423 /* Pods_RxSonosLibTests.framework */; };
+		58495E9B2C1B6AD50096BCF8 /* Pods_RxSonosLibTests.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 61E2E069A6996FE20C1D0423 /* Pods_RxSonosLibTests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58495E9C2C1B6AD70096BCF8 /* RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81A05D72060289A00897738 /* RxSonosLib.framework */; };
+		58495E9D2C1B6AD70096BCF8 /* RxSonosLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F81A05D72060289A00897738 /* RxSonosLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5860A1F62C0E382500450DDE /* GroupRenderingControlRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860A1F52C0E382500450DDE /* GroupRenderingControlRepositoryImpl.swift */; };
 		5860A1F82C0E387200450DDE /* GroupRenderingControlRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860A1F72C0E387200450DDE /* GroupRenderingControlRepository.swift */; };
 		5860A2332C0E483D00450DDE /* ContentDirectoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860A22A2C0E483D00450DDE /* ContentDirectoryRepository.swift */; };
@@ -67,7 +70,6 @@
 		F81A05F8206028D600897738 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C592056FBEC00AE311E /* Network.swift */; };
 		F81A05F9206028D600897738 /* LocalNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C5D2056FC8200AE311E /* LocalNetwork.swift */; };
 		F81A05FF206028D600897738 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818EA512056DD2C005D4F45 /* CacheManager.swift */; };
-		F81A061E206029AE00897738 /* RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81A05D72060289A00897738 /* RxSonosLib.framework */; };
 		F81A062720602D7A00897738 /* GroupRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */; };
 		F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */; };
 		F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */; };
@@ -202,6 +204,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		58495E912C1B68520096BCF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F83FED0C1F97CD4B004DF663 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F81A05A82060280A00897738;
+			remoteInfo = "iOS Demo App";
+		};
 		F81A061F206029AE00897738 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F83FED0C1F97CD4B004DF663 /* Project object */;
@@ -212,6 +221,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		58495E992C1B6AC80096BCF8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				58495E9D2C1B6AD70096BCF8 /* RxSonosLib.framework in Embed Frameworks */,
+				58495E9B2C1B6AD50096BCF8 /* Pods_RxSonosLibTests.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F81A05E32060289A00897738 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,6 +249,9 @@
 		0740F6AF987AA968A7332CFA /* Pods-RxSonosLibTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLibTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests.debug.xcconfig"; sourceTree = "<group>"; };
 		116FD63C843FC788D90A4D11 /* Pods_RxSonosLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSonosLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3854FB5E4ED64058232E6233 /* Pods_iOS_Demo_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Demo_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58495E932C1B686D0096BCF8 /* Mockingjay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Mockingjay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58495E962C1B6AC80096BCF8 /* Pods_RxSonosLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RxSonosLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58495E9E2C1B6B5B0096BCF8 /* AEXML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AEXML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5860A1F52C0E382500450DDE /* GroupRenderingControlRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRenderingControlRepositoryImpl.swift; sourceTree = "<group>"; };
 		5860A1F72C0E387200450DDE /* GroupRenderingControlRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRenderingControlRepository.swift; sourceTree = "<group>"; };
 		5860A22A2C0E483D00450DDE /* ContentDirectoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDirectoryRepository.swift; sourceTree = "<group>"; };
@@ -453,8 +477,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F81A061E206029AE00897738 /* RxSonosLib.framework in Frameworks */,
-				4E91F92E1A58EE1BDA9D2FA3 /* Pods_RxSonosLibTests.framework in Frameworks */,
+				58495E9C2C1B6AD70096BCF8 /* RxSonosLib.framework in Frameworks */,
+				58495E9A2C1B6AD50096BCF8 /* Pods_RxSonosLibTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +516,9 @@
 		F4BC41ECAFDC6F4253D98D47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58495E9E2C1B6B5B0096BCF8 /* AEXML.framework */,
+				58495E962C1B6AC80096BCF8 /* Pods_RxSonosLib.framework */,
+				58495E932C1B686D0096BCF8 /* Mockingjay.framework */,
 				116FD63C843FC788D90A4D11 /* Pods_RxSonosLib.framework */,
 				61E2E069A6996FE20C1D0423 /* Pods_RxSonosLibTests.framework */,
 				3854FB5E4ED64058232E6233 /* Pods_iOS_Demo_App.framework */,
@@ -1144,11 +1171,13 @@
 				F81A0616206029AE00897738 /* Frameworks */,
 				F81A0617206029AE00897738 /* Resources */,
 				FADE12DF1AD6D0938E459C2E /* [CP] Embed Pods Frameworks */,
+				58495E992C1B6AC80096BCF8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				F81A0620206029AE00897738 /* PBXTargetDependency */,
+				58495E922C1B68520096BCF8 /* PBXTargetDependency */,
 			);
 			name = RxSonosLibTests;
 			productName = RxSonosLibTests;
@@ -1574,6 +1603,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		58495E922C1B68520096BCF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F81A05A82060280A00897738 /* iOS Demo App */;
+			targetProxy = 58495E912C1B68520096BCF8 /* PBXContainerItemProxy */;
+		};
 		F81A0620206029AE00897738 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F81A05D62060289A00897738 /* RxSonosLib */;
