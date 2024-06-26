@@ -206,6 +206,16 @@ open class SonosInteractor {
             .get(values: SetBecomeCoordinatorOfStandaloneGroupRoomValues(room: room))
     }
 
+    static public func getVolume(for room: Room) -> Observable<Int> {
+        return GetRoomVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+            .get(values: GetRoomVolumeValues(room: room))
+    }
+
+    static public func setVolume(volume: Int, for room: Room) -> Completable {
+        return SetRoomVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+            .get(values: SetRoomVolumeValues(volume: volume, room: room))
+    }
+
     static public func getGroupVolume(for room: Room) -> Observable<Int> {
         return GetGroupVolumeInteractor(groupRenderingControlRepository: RepositoryInjection.provideGroupRenderingControlRepository())
             .get(values: GetGroupVolumeValues(room: room))
