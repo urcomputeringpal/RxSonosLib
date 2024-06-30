@@ -40,15 +40,15 @@ extension XCTestCase {
     
     /* Groups */
     func firstGroup() -> Group {
-        return Group(master: firstRoom(), slaves: [])
+        return Group(id: "1", master: firstRoom(), slaves: [])
     }
     
     func secondGroup() throws -> Group {
-        return try Group(master: firstRoom(), slaves: [secondRoom()])
+        return try Group(id: "2", master: firstRoom(), slaves: [secondRoom()])
     }
     
     func thirdGroup() throws -> Group {
-        return try Group(master: thirdRoom(), slaves: [])
+        return try Group(id: "3", master: thirdRoom(), slaves: [])
     }
     
     /* Rooms */
@@ -84,6 +84,6 @@ extension XCTestCase {
     
     /* Tracks */
     func firstTrack() -> MusicProviderTrack {
-        return MusicProviderTrack(sid: 9, flags: nil, sn: nil, queueItem: 1, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, description: [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
+        return MusicProviderTrack(sid: 9, flags: nil, sn: nil, queueItem: 1, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, description: [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"], mediaInfo: [:], contentType: TrackContentType.airplay)
     }
 }

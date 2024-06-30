@@ -11,31 +11,32 @@ import RxSwift
 import AEXML
 
 class LocalNetwork<Target: SonosTargetType>: Network {
-    
+
     func request(_ action: Target, on room: Room) -> Single<[String: String]> {
         let url = room.ip.appendingPathComponent(action.controllUrl)
         var urlRequest = URLRequest(url: url, timeoutInterval: SonosSettings.shared.requestTimeout)
         urlRequest.setValue(room.userAgent, forHTTPHeaderField: "User-Agent")
         urlRequest.setValue("text/xml; charset=\"utf-8\"", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("gzip", forHTTPHeaderField: "Accept-Encoding")
-        urlRequest.setValue("en-US", forHTTPHeaderField: "Accept-Language")
+        urlRequest.setValue("*", forHTTPHeaderField: "Accept-Encoding")
+        urlRequest.setValue("*", forHTTPHeaderField: "Accept-Language")
+        urlRequest.setValue("close", forHTTPHeaderField: "Connection")
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("\"\(action.soapAction)\"", forHTTPHeaderField: "SOAPACTION")
         urlRequest.httpBody = action.requestBody.data(using: .utf8)
-        
+
         return perform(request: urlRequest).map(openEnvelope(for: action))
     }
-    
+
     internal func openEnvelope(for target: Target) -> ((Data) throws -> [String: String]) {
         return { data in
             let xml = try AEXMLDocument.create(data)
             let element = xml?["Envelope"]["Body"]["\(target.action)Response"]
-            
+
             var soapData: [String: String] = [:]
             element?.children.forEach({ (row) in
                 soapData[row.name] = row.string
             })
-            
+
             return soapData
         }
     }

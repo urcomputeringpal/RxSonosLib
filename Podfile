@@ -1,6 +1,4 @@
 
-source 'https://github.com/CocoaPods/Specs.git'
-
 # Comment this line if you're not using Swift and don't want to use dynamic frameworks
 use_frameworks!
 
@@ -18,14 +16,14 @@ target 'RxSonosLib' do
   target 'RxSonosLibTests' do
     inherit! :search_paths
 
-    pod 'Mockingjay'
+    pod 'Mockingjay', :git => 'https://github.com/kylef/Mockingjay', :commit => 'b88c9dce2b7561cccbf35e2882b3c71a2efa387a'
     pod 'RxBlocking', '~> 5'
   end
 
 end
 
 target 'iOS Demo App' do
-  platform :ios, '15.4'
+  platform :ios, '16.0'
 
   pod 'RxSonosLib', :path => '.'
   pod 'RxSwift', '~> 5'

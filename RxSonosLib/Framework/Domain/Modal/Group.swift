@@ -9,7 +9,9 @@
 import Foundation
 import RxSwift
 
-open class Group {
+open class Group: Codable & Identifiable {
+
+    public let id: String
 
     /// The Master Room handles all requests that are fired to the Sonos Group
     public let master: Room
@@ -32,11 +34,9 @@ open class Group {
         return [master] + slaves
     }
 
-    /// Active Track for this Group
-    let activeTrack: BehaviorSubject<Track?> = BehaviorSubject(value: nil)
-    internal let disposebag = DisposeBag()
 
-    init(master: Room, slaves: [Room]) {
+    public init(id: String, master: Room, slaves: [Room]) {
+        self.id = id
         self.master = master
         self.slaves = slaves
     }
@@ -46,7 +46,7 @@ open class Group {
 extension Group: Equatable {
     public static func == (lhs: Group, rhs: Group) -> Bool {
 
-        return lhs.master == rhs.master && lhs.slaves.sorted(by: sortRooms) == rhs.slaves.sorted(by: sortRooms)
+        return lhs.id == rhs.id
     }
 }
 
@@ -128,6 +128,16 @@ extension ObservableType where E == Group {
             })
     }
 
+    public func changeTrack(number: Int) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.changeTrack(number: number, for: group)
+            })
+    }
+
     public func getVolume() -> Observable<Int> {
         return
             self
@@ -166,7 +176,7 @@ extension ObservableType where E == Group {
             })
     }
 
-    public func setPlayUri(_ uri:String) -> Completable {
+    public func setPlayUri(_ uri: String) -> Completable {
            return
                self
                .take(1)
@@ -175,6 +185,56 @@ extension ObservableType where E == Group {
                    return SonosInteractor.setPlayUri(uri, group)
                })
        }
+
+    public func addTrackToQueuePlayNext(uri:String, metadata:String) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.addTrackToQueuePlayNext(uri: uri, metadata: metadata, group: group)
+            })
+    }
+
+    public func addTrackToQueue(uri:String, metadata:String, number: Int) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.addTrackToQueue(uri: uri, metadata: metadata, number: number, group: group)
+            })
+    }
+
+    public func reorderTracksInQueue(startingIndex: Int, numberOfTracks: Int, insertBefore: Int) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.reorderTracksInQueue(startingIndex: startingIndex, numberOfTracks: numberOfTracks, insertBefore: insertBefore, group: group)
+            })
+    }
+
+    public func removeTrackFromQueue(track: Int) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.removeTrackFromQueue(track: track, group: group)
+            })
+    }
+
+    public func removeAllTracksFromQueue() -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.removeAllTracksFromQueue(group)
+            })
+    }
 
     public func getMute() -> Observable<[Bool]> {
         return
@@ -198,5 +258,65 @@ extension ObservableType where E == Group {
 
     public func setBecomeCoordinatorOfStandaloneGroup(idx: Int, group: Group) -> Completable {
         return SonosInteractor.setBecomeCoordinatorOfStandaloneGroup(idx: idx, for: group)
+    }
+
+    public func getGroupVolume() -> Observable<Int> {
+        return
+            self
+            .take(1)
+            .flatMap({ (group) -> Observable<Int> in
+                return SonosInteractor.getGroupVolume(for: group.master)
+            })
+            .asObservable()
+    }
+
+    public func setGroupVolume(volume: Int) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.setGroupVolume(volume: volume, for: group.master)
+            })
+    }
+
+    public func setRelativeGroupVolume(volume: Int) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.setRelativeGroupVolume(volume: volume, for: group.master)
+            })
+    }
+
+    public func setGroupMute(enabled: Bool) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.setGroupMute(enabled: enabled, for: group.master)
+            })
+    }
+
+    public func getGroupMute() -> Observable<Bool> {
+        return
+            self
+            .take(1)
+            .flatMap({ (group) -> Observable<Bool> in
+                return SonosInteractor.getGroupMute(for: group.master)
+            })
+            .asObservable()
+    }
+
+    public func snapshotGroupVolume() -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.snapshotGroupVolume(for: group.master)
+            })
     }
 }

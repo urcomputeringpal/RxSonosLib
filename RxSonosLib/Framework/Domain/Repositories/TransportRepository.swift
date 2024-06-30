@@ -25,7 +25,17 @@ protocol TransportRepository {
 
     func setPlay(group: Group) -> Completable
 
-    func setPlayUri(uri: String,group: Group) -> Completable
+    func setPlayUri(uri: String, group: Group) -> Completable
+
+    func addTrackToQueuePlayNext(uri: String, metadata: String, group: Group) -> Completable
+
+    func addTrackToQueue(uri: String, metadata: String, number: Int, group: Group) -> Completable
+
+    func reorderTracksInQueue(startingIndex: Int, numberOfTracks: Int, insertBefore: Int, group: Group) -> Completable
+
+    func removeTrackFromQueue(track: Int, group: Group) -> Completable
+
+    func removeAllTracksFromQueue(group: Group) -> Completable
 
     func setPause(group: Group) -> Completable
 
@@ -33,8 +43,14 @@ protocol TransportRepository {
 
     func seekTrack(time: String, for room: Room) -> Completable
 
+    func changeTrack(number: Int, for room: Room) -> Completable
+
     func setAVTransportURI(for group: Group, masterURI: String, metadata: String) -> Completable
 
+    func setAVTransportURI(room: Room, masterURI: String, metadata: String) -> Completable
+
     func setBecomeCoordinatorOfStandaloneGroup(for group: Group, idx: Int) -> Completable
+
+    func setBecomeCoordinatorOfStandaloneRoomGroup(room: Room) -> Completable
 
 }

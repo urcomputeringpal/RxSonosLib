@@ -15,22 +15,48 @@ struct SeekTrackValues: RequestValues {
 }
 
 class SeekTrackInteractor: CompletableInteractor {
-    
+
     typealias T = SeekTrackValues
-    
+
     private let transportRepository: TransportRepository
-    
+
     init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
     }
-    
+
     func buildInteractorObservable(values: SeekTrackValues?) -> Completable {
         guard let group = values?.group,
               let time = values?.time else {
             return Completable.error(SonosError.invalidImplementation)
         }
-        
+
         return transportRepository
             .seekTrack(time: time, for: group.master)
+    }
+}
+
+struct ChangeTrackValues: RequestValues {
+    let group: Group
+    let number: Int
+}
+
+class ChangeTrackInteractor: CompletableInteractor {
+
+    typealias T = ChangeTrackValues
+
+    private let transportRepository: TransportRepository
+
+    init(transportRepository: TransportRepository) {
+        self.transportRepository = transportRepository
+    }
+
+    func buildInteractorObservable(values: ChangeTrackValues?) -> Completable {
+        guard let group = values?.group,
+              let number = values?.number else {
+            return Completable.error(SonosError.invalidImplementation)
+        }
+
+        return transportRepository
+            .changeTrack(number: number, for: group.master)
     }
 }

@@ -64,6 +64,32 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
 
+
+    func addTrackToQueuePlayNext(uri: String, metadata: String, group: Group) -> Completable {
+        return network.request(.addTrackToQueuePlayNext(uri: uri, metadata: metadata), on: group.master)
+            .asCompletable()
+    }
+
+    func addTrackToQueue(uri: String, metadata: String, number: Int, group: Group) -> Completable {
+        return network.request(.addTrackToQueue(uri: uri, metadata: metadata, number: number), on: group.master)
+            .asCompletable()
+    }
+
+    func reorderTracksInQueue(startingIndex: Int, numberOfTracks: Int, insertBefore: Int, group: Group) -> Completable {
+        return network.request(.reorderTracksInQueue(startingIndex: startingIndex, numberOfTracks: numberOfTracks, insertBefore: insertBefore), on: group.master)
+            .asCompletable()
+    }
+
+    func removeTrackFromQueue(track: Int, group: Group) -> Completable {
+        return network.request(.removeTrackFromQueue(number: track), on: group.master)
+            .asCompletable()
+    }
+
+    func removeAllTracksFromQueue(group: Group) -> Completable {
+        return network.request(.removeAllTracksFromQueue, on: group.master)
+            .asCompletable()
+    }
+
     func setPlayUri(uri: String, group: Group) -> Completable {
         // TODO optional metadata?
         return network.request(.setAVTransportURI(uri: uri, metadata: ""), on: group.master)
@@ -85,8 +111,24 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
 
+    func changeTrack(number: Int, for room: Room) -> Completable {
+        return network.request(.changeTrack(number: number), on: room)
+            .asCompletable()
+    }
+
+
     func setAVTransportURI(for group: Group, masterURI: String, metadata: String) -> Completable {
         return network.request(.setAVTransportURI(uri: masterURI, metadata: metadata), on: group.master)
+            .asCompletable()
+    }
+
+    func setAVTransportURI(room: Room, masterURI: String, metadata: String) -> Completable {
+        return network.request(.setAVTransportURI(uri: masterURI, metadata: metadata), on: room)
+            .asCompletable()
+    }
+
+    func setBecomeCoordinatorOfStandaloneGroup(for room: Room) -> Completable {
+        return network.request(.setBecomeCoordinatorOfStandaloneGroup, on: room)
             .asCompletable()
     }
 
@@ -95,6 +137,12 @@ class TransportRepositoryImpl: TransportRepository {
         return network.request(.setBecomeCoordinatorOfStandaloneGroup, on: slave)
             .asCompletable()
     }
+
+    func setBecomeCoordinatorOfStandaloneRoomGroup(room: Room) -> Completable {
+        return network.request(.setBecomeCoordinatorOfStandaloneGroup, on: room)
+            .asCompletable()
+    }
+
 }
 
 private extension TransportRepositoryImpl {

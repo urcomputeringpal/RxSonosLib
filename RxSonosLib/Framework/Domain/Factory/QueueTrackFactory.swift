@@ -31,7 +31,7 @@ struct QueueTrackFactory {
                 return nil
         }
         
-        return MusicProviderTrack(sid: sid, flags: service.flags, sn: service.sn, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, contentType: .musicTrack)
+        return MusicProviderTrack(sid: sid, flags: service.flags, sn: service.sn, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description, mediaInfo: [:], contentType: .musicTrack)
     }
     
     private func getDescription() -> [TrackDescription: String]? {
