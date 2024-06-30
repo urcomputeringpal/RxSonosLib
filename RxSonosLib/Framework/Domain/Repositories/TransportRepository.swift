@@ -31,6 +31,8 @@ protocol TransportRepository {
 
     func addTrackToQueue(uri: String, metadata: String, number: Int, group: Group) -> Completable
 
+    func reorderTracksInQueue(startingIndex: Int, numberOfTracks: Int, insertBefore: Int, group: Group) -> Completable
+
     func removeTrackFromQueue(track: Int, group: Group) -> Completable
 
     func removeAllTracksFromQueue(group: Group) -> Completable

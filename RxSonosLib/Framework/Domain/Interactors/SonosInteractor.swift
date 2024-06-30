@@ -96,6 +96,11 @@ open class SonosInteractor {
             .get(values: AddTrackToQueueValues(group: group, uri: uri, metadata: metadata, number: number))
     }
 
+    static public func reorderTracksInQueue(startingIndex: Int, numberOfTracks: Int, insertBefore: Int, group: Group) -> Completable {
+        return ReorderTracksInQueueInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: ReorderTracksInQueueValues(group: group, startingIndex: startingIndex, numberOfTracks: numberOfTracks, insertBefore: insertBefore))
+    }
+
     static public func removeTrackFromQueue(track: Int, group: Group) -> Completable {
         return RemoveTrackFromQueueInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: RemoveTrackFromQueueValues(group: group, track: track))

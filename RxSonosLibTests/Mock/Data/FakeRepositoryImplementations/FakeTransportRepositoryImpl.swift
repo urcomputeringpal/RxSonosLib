@@ -22,6 +22,10 @@ class FakeTransportRepositoryImpl: TransportRepository {
     func addTrackToQueue(uri: String, metadata: String, number: Int, group: RxSonosLib.Group) -> RxSwift.Completable {
         return Completable.empty()
     }
+
+    func reorderTracksInQueue(startingIndex: Int, numberOfTracks: Int, insertBefore: Int, group: RxSonosLib.Group) -> RxSwift.Completable {
+        return Completable.empty()
+    }
     
     func removeTrackFromQueue(track: Int, group: RxSonosLib.Group) -> RxSwift.Completable {
         return Completable.empty()

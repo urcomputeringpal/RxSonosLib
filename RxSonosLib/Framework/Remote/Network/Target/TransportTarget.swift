@@ -20,6 +20,7 @@ enum TransportTarget: SonosTargetType {
     case mediaInfo
     case changeTrack(number: Int)
     case seekTime(time: String)
+    case reorderTracksInQueue(startingIndex: Int, numberOfTracks: Int, insertBefore: Int)
     case removeTrackFromQueue(number: Int)
     case removeAllTracksFromQueue
     case addTrackToQueue(uri: String, metadata: String, number: Int)
@@ -54,6 +55,8 @@ enum TransportTarget: SonosTargetType {
             return "GetMediaInfo"
         case .removeAllTracksFromQueue:
             return "RemoveAllTracksFromQueue"
+        case .reorderTracksInQueue:
+            return "ReorderTracksInQueue"
         case .setQueue:
             return "SetAVTransportURI"
         case .setAVTransportURI:
@@ -79,6 +82,8 @@ enum TransportTarget: SonosTargetType {
             return "<InstanceID>0</InstanceID><Unit>TRACK_NR</Unit><Target>\(number)</Target>"
         case .positionInfo, .transportInfo, .mediaInfo, .setBecomeCoordinatorOfStandaloneGroup:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
+        case .reorderTracksInQueue(let startingIndex, let numberOfTracks, let insertBefore):
+            return "<InstanceID>0</InstanceID><StartingIndex>\(startingIndex)</StartingIndex><NumberOfTracks>\(numberOfTracks)</NumberOfTracks><InsertBefore>\(insertBefore)</InsertBefore><UpdateID>0</UpdateID>"
         case .removeAllTracksFromQueue:
             return "<InstanceID>0</InstanceID>"
         case .setQueue(let uri, let metadata), .setAVTransportURI(let uri, let metadata):

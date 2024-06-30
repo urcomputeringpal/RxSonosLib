@@ -158,3 +158,31 @@ class RemoveAllTracksFromQueueInteractor: CompletableInteractor {
             .removeAllTracksFromQueue(group: group)
     }
 }
+
+
+struct ReorderTracksInQueueValues: RequestValues {
+    let group: Group
+    let startingIndex: Int
+    let numberOfTracks: Int
+    let insertBefore: Int
+}
+
+class ReorderTracksInQueueInteractor: CompletableInteractor {
+
+    typealias T = ReorderTracksInQueueValues
+
+    private let transportRepository: TransportRepository
+
+    init(transportRepository: TransportRepository) {
+        self.transportRepository = transportRepository
+    }
+
+    func buildInteractorObservable(values: ReorderTracksInQueueValues?) -> Completable {
+        guard let group = values?.group, let startingIndex = values?.startingIndex, let numberOfTracks = values?.numberOfTracks, let insertBefore = values?.insertBefore else {
+            return Completable.error(SonosError.invalidImplementation)
+        }
+
+        return transportRepository
+            .reorderTracksInQueue(startingIndex: startingIndex, numberOfTracks: numberOfTracks, insertBefore: insertBefore, group: group)
+    }
+}

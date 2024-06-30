@@ -206,6 +206,16 @@ extension ObservableType where E == Group {
             })
     }
 
+    public func reorderTracksInQueue(startingIndex: Int, numberOfTracks: Int, insertBefore: Int) -> Completable {
+        return
+            self
+            .take(1)
+            .asSingle()
+            .flatMapCompletable({ (group) -> Completable in
+                return SonosInteractor.reorderTracksInQueue(startingIndex: startingIndex, numberOfTracks: numberOfTracks, insertBefore: insertBefore, group: group)
+            })
+    }
+
     public func removeTrackFromQueue(track: Int) -> Completable {
         return
             self

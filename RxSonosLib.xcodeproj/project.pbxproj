@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5695767EDA6F73DC8F6D8407 /* Pods_RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58495E962C1B6AC80096BCF8 /* Pods_RxSonosLib.framework */; };
 		58495E9A2C1B6AD50096BCF8 /* Pods_RxSonosLibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E2E069A6996FE20C1D0423 /* Pods_RxSonosLibTests.framework */; };
 		58495E9B2C1B6AD50096BCF8 /* Pods_RxSonosLibTests.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 61E2E069A6996FE20C1D0423 /* Pods_RxSonosLibTests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58495E9C2C1B6AD70096BCF8 /* RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81A05D72060289A00897738 /* RxSonosLib.framework */; };
@@ -470,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B4592187068D8F602694395 /* Pods_RxSonosLib.framework in Frameworks */,
+				5695767EDA6F73DC8F6D8407 /* Pods_RxSonosLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

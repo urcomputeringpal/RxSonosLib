@@ -75,6 +75,11 @@ class TransportRepositoryImpl: TransportRepository {
             .asCompletable()
     }
 
+    func reorderTracksInQueue(startingIndex: Int, numberOfTracks: Int, insertBefore: Int, group: Group) -> Completable {
+        return network.request(.reorderTracksInQueue(startingIndex: startingIndex, numberOfTracks: numberOfTracks, insertBefore: insertBefore), on: group.master)
+            .asCompletable()
+    }
+
     func removeTrackFromQueue(track: Int, group: Group) -> Completable {
         return network.request(.removeTrackFromQueue(number: track), on: group.master)
             .asCompletable()
